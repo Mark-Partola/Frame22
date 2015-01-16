@@ -25,6 +25,7 @@ class ORM{
 
 	private $pdo;
 	private $table; // имя таблицы БД
+	private $id;	//идентификатор записи
 
 	private $fields = array(); // массив с информацией о полях таблицы. Имя, значение, тип, новое значение.
 
@@ -55,16 +56,18 @@ class ORM{
 		if(!is_integer($id))
 			throw new ORMException("Argument [id] must be [integer]");
 
+		$this->id = $id;
+
 		$sql = "SELECT * FROM `{$this->table}`
 					WHERE `id` = $id";
-		$res = $this->pdo->query($sql);
+		$stmt = $this->pdo->query($sql);
 
-		if(empty($res))
+		$result = $stmt->fetch();
+		if(empty($result))
 			throw new ORMException("Don`t isset field");
 
-		$result = $res->fetch();
 		for($i = 0; $i<count($result); $i++){
-			$this->fields[key($result)]['type'] = $this->_translateNativeType($res->getColumnMeta($i)['native_type']);
+			$this->fields[key($result)]['type'] = $this->_translateNativeType($stmt->getColumnMeta($i)['native_type']);
 			$this->fields[key($result)]['value'] = $result[key($result)];
 			next($result);
 		}
@@ -98,37 +101,41 @@ class ORM{
 
 	public function save(){
 
-		echo '<pre>'.print_r($this->fields,true).'</pre>';
+		//echo '<pre>'.print_r($this->fields,true).'</pre>';
 
 		if(!$this->needUpdate)
 			return false;
 
-		$sql = "UPDATE `{$this->table}` (";
+		$sql = "UPDATE `{$this->table}` SET ";
 
 		foreach($this->fields as $key => $val){
 			if(isset($this->fields[$key]['new'])){
-				$sql .= "`{$key}`, ";
+				$sql .= "`{$key}` = :{$key}, ";
 			}
 		}
 
 		$sql = substr($sql, 0, -2);
-		$sql .= ') SET (';
+		$sql .= " WHERE `id` = {$this->id}";
+
+		$stmt = $this->pdo->prepare($sql);
 
 		foreach($this->fields as $key => $val){
 			if(isset($this->fields[$key]['new'])){
-				if($this->fields[$key]['type'] === 'string')
-					$sql .= "'{$this->fields[$key]['new']}', ";
-				else
-					$sql .= $this->fields[$key]['new'].', ';
+				if($this->fields[$key]['type'] === 'string'){
+					$stmt->bindValue(":{$key}", $this->fields[$key]['new'], \PDO::PARAM_STR);
+				}
+				else{
+					$stmt->bindValue(":{$key}", $this->fields[$key]['new'], \PDO::PARAM_INT);
+				}
 			}
 		}
 
-		$sql = substr($sql, 0, -2);
-		$sql .= ')';
-		echo $sql;
+		$stmt->execute();
+
+		$this->recover($this->id);
 	}
 
-	/*Преобразует вывод метода PDO::getColumnMeta в вид удобный для использования в подготовленных запросах*/
+	/*Преобразует вывод метода PDO::getColumnMeta в обыкновенные типы*/
 
 	private function _translateNativeType($orig) {
 	    $trans = array(
@@ -157,11 +164,10 @@ try{
 	$o = new ORM($pdo);
 
 	$o->setTable('lib_users');
-	$o->recover(2);
+	$o->recover(1);
 	//echo $o->fname;
-	$o->email = 'qwer@qwe.eeee';
-	//$o->fname = 'qeeee';
-	$o->id = 10;
+	$o->email = 'ertgggg@qwe.eeee';
+	$o->id = 1;
 	$o->save();
 }catch(ORMException $e){
 
