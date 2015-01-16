@@ -1,0 +1,5 @@
+December-14-2014 1:17:47 am	|	Request		|	GET	|	/library/public/	|	127.0.0.1	|	200
+December-14-2014 1:17:50 am	|	Request		|	GET	|	/library/public/f	|	127.0.0.1	|	404
+December-14-2014 1:18:06 am	|	Request		|	GET	|	/library/public/	|	127.0.0.1	|	200
+December-14-2014 1:18:46 am	|	Request		|	GET	|	/library/public/	|	127.0.0.1	|	200
+December-14-2014 1:18:50 am	|	Request		|	GET	|	/library/public/	|	127.0.0.1	|	200
