@@ -156,22 +156,3 @@ class ORM extends ADBClass{
 	}
 
 }
-
-try{
-
-	$pdo = new \PDO("mysql:host=localhost;dbname=library", 'root', '123');
-	$pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-
-	$o = new ORM($pdo);
-	echo '<pre>'.print_r($o->select("SELECT * FROM `lib_users` WHERE `id` = ? OR `id` = ?", array(1, 3)),true).'</pre>';
-	//$o->setTable('lib_users');
-	//$o->recover(1);
-	//echo $o->fname;
-	//$o->email = 'ertgggg@qwe.eeee';
-	//$o->id = 1;
-	//$o->save();
-}catch(ORMException $e){
-
-	echo $e->getMessage();
-
-}
