@@ -1,4 +1,4 @@
-<?php
+<?php namespace Controllers;
 
 
 abstract class Ctrl_base {

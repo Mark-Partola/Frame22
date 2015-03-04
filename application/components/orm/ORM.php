@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Application\Components\Orm;
+namespace Components\Orm;
 
 require_once "ORMException.php";
 require_once "ADBClass.php";

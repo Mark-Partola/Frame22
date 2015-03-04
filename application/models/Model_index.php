@@ -1,7 +1,6 @@
-<?php
-require 'Model_abstractDb.php';
+<?php namespace Models;
 
-use Frame\Application\Components\Orm\ORM;
+use Components\Orm\ORM;
 
 class Model_index extends Model_abstractDb{
 

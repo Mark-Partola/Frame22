@@ -1,5 +1,4 @@
-<?php
-require 'Model_databaseConnect.php';
+<?php namespace Models;
 
 abstract class Model_abstractDb{
 

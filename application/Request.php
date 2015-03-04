@@ -50,6 +50,7 @@ class Request {
 		}
 
 		//туду многократный вызов контроллера
+		$controller = "Controllers\\$controller";
 		$this->controller = new $controller;
 
 		//добавляем запрос в очередь

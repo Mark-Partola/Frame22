@@ -1,4 +1,4 @@
-<?php
+<?php namespace Models;
 
 class Model_databaseConnect{
 
@@ -15,11 +15,11 @@ class Model_databaseConnect{
 			$dsn = DRIVER.':host='.HOST.';dbname='.DBNAME;
 
 			try {
-				self::$instance = new PDO($dsn, USER, PASS);
+				self::$instance = new \PDO($dsn, USER, PASS);
 				self::$instance->exec("SET NAMES utf8");
-				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+				self::$instance->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
 				//Logger::all('тестовый лог3', __FILE__, __LINE__);
-			} catch (PDOException $e) {
+			} catch (\PDOException $e) {
 				Application::triggerError();
 			}
 

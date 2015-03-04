@@ -1,6 +1,6 @@
-<?php
+<?php namespace Controllers;
 
-require  __DIR__."/../models/Model_index.php";
+use Models\Model_index;
 
 class Ctrl_index extends Ctrl_base{
 

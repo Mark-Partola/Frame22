@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Application\Components\Orm;
+namespace Components\Orm;
 
 abstract class ADBClass{
 
