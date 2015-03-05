@@ -9,8 +9,12 @@ Application::init();
 Request('GET', '/admin','Admin\Admin_index');
 
 Request('GET', '/','Ctrl_index');
-//авторизация
-Request('GET', '/auth/login','User\Auth');
+
+/*
+* Авторизация
+*/
+Request('GET', '/auth/login','User\Auth'); //показать страницу
+Request('POST', '/auth/login','User\Auth:login'); //проверка логина/пароля
 
 Application::run();
 

@@ -4,7 +4,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 
 	public function index(){
 
-		if($_SESSION['role'] !== 'admin' || !$_SESSION['priv']['show_admin']) header('Location: '.ROUTE_ROOT.'/auth/login');
+		if(!in_array(1, $_SESSION['auth']['action'])) header('Location: '.ROUTE_ROOT.'/');
 
 		echo 'Hello Admin!';
 

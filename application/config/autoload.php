@@ -18,7 +18,7 @@
 
 spl_autoload_register(function ($class) {
 
-	echo $class . '<br>';
+	//echo $class . '<br>';
 
 	$base_dir = DOCUMENT_ROOT . '/application/';
 
@@ -30,7 +30,7 @@ spl_autoload_register(function ($class) {
 
 	$filename = $base_dir . str_replace('\\', '/', $prefix . $relative_class) . '.php';
 
-	//echo $filename;
+	echo $filename. '<br>';
 
 	if (file_exists($filename)) {
 		require_once $filename;
