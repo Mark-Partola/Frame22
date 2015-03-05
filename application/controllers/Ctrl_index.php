@@ -10,5 +10,9 @@ class Ctrl_index extends Ctrl_base{
 
 		$this->model->testORM();
 
+		print_arr($_SESSION);
+
+		echo "<h1><a href=".ROUTE_ROOT.'/admin'.">Админка</a></h1>";
+
 	}
 }

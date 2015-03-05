@@ -15,6 +15,7 @@ Request('GET', '/','Ctrl_index');
 */
 Request('GET', '/auth/login','User\Auth'); //показать страницу
 Request('POST', '/auth/login','User\Auth:login'); //проверка логина/пароля
+Request('GET', '/auth/logout','User\Auth:logout'); //проверка логина/пароля
 
 Application::run();
 

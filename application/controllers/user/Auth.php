@@ -4,7 +4,11 @@ class Auth extends \Controllers\Ctrl_base{
 
 	public function index(){
 
-		echo $this->generateTemplate('default/login');
+		$template = $this->twig->loadTemplate('default/login.html');
+
+		echo $template->render(array(
+			'dir' => ROUTE_ROOT
+		));
 
 	}
 
@@ -14,10 +18,17 @@ class Auth extends \Controllers\Ctrl_base{
 
 		$authData = $model->login($_POST['login'], md5($_POST['password']));
 
-		if(!$authData) header('Location: '.ROUTE_ROOT.'/auth/login');
+		if(!$authData){
+			header('Location: '.ROUTE_ROOT.'/auth/login');
+		} else {
+			$_SESSION['auth'] = $authData;
 
+			header('Location: '.ROUTE_ROOT);
+		}
 
-		$_SESSION['auth'] = $authData;
-
+	}
+	public function logout(){
+		unset($_SESSION['auth']);
+		header('Location: '.ROUTE_ROOT);
 	}
 }
