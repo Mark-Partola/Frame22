@@ -50,8 +50,8 @@ class Request {
 		}
 
 		//туду многократный вызов контроллера
-		$controller = "Controllers\\$controller";
-		$this->controller = new $controller;
+		$this->controller = "Controllers\\$controller";
+		//$this->controller = new $controller;
 
 		//добавляем запрос в очередь
 		Application::getInstance()->requests[] = $this;
@@ -133,7 +133,7 @@ class Request {
 		}
 
 		//вызываем кэллбек, передавая массив с переменными запроса
-		if (!method_exists($this->controller, $this->action)) {
+		if (!method_exists(new $this->controller, $this->action)) {
 			//header('Location:'.APP_ROOT.'/errors?status=404');
 			return false;
 		} else {

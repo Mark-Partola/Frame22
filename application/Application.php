@@ -36,13 +36,13 @@ class Application {
 			$done = $request->run();
 
 			if($done) {
-				RequestLogger::log('Request',$_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+				//RequestLogger::log('Request',$_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
 				return true;
 			} else {
 				$path = $_SERVER['REQUEST_URI'];
 			 }
 		}
-		RequestLogger::log('Request',($_SERVER['REQUEST_METHOD']), $path);
+		//RequestLogger::log('Request',($_SERVER['REQUEST_METHOD']), $path);
 
 		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found"); 
 		header('Location:'.ROUTE_ROOT.'/errors?status=404');
