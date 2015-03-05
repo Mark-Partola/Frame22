@@ -30,7 +30,7 @@ spl_autoload_register(function ($class) {
 
 	$filename = $base_dir . str_replace('\\', '/', $prefix . $relative_class) . '.php';
 
-	echo $filename. '<br>';
+	//echo $filename. '<br>';
 
 	if (file_exists($filename)) {
 		require_once $filename;

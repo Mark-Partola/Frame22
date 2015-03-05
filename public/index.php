@@ -1,5 +1,5 @@
 <?php
-$start = microtime(true);
+//$start = microtime(true);
 
 require_once __DIR__.'/../application/Application.php';
 
@@ -19,9 +19,9 @@ Request('POST', '/auth/login','User\Auth:login'); //проверка логин�
 Application::run();
 
 
-//cho '<br>';
-//echo '<br>';
-//echo '<br>';
-echo '<br><br>Время генерации страницы: '. (microtime(true) - $start);
+/*echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br><br>Время генерации страницы: '. (microtime(true) - $start);*/
 
 ?>
