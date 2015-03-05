@@ -3,6 +3,11 @@
 
 abstract class Ctrl_base {
 
+	function __construct(){
+		$loader = new \Twig_Loader_Filesystem(DOCUMENT_ROOT.'/public/tpl/templates');
+		$this->twig = new \Twig_Environment($loader);
+	}
+
 	protected $template;
 
 	/*
@@ -27,6 +32,13 @@ abstract class Ctrl_base {
 	}
 
 	protected function getTemplate($page='index', $params=null, $title=SITE_NAME, $header='header', $footer='footer'){
+
+		if( strpos($page, '/') !== false){
+			$index = strripos($page, '/');
+			$prefix = substr($page, 0, $index+1);
+			$header = $prefix . $header;
+			$footer = $prefix . $footer;
+		}
 
 		$header = $this->generateTemplate('header', array('title' => $title));
 		$footer = $this->generateTemplate('footer');
