@@ -8,10 +8,101 @@
 
 <article class="module width_full">
 	<header><h3>Пользователи</h3></header>
-	<div class="module_content">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, adipisci? Nulla maiores minus praesentium repellat voluptatum ad ex adipisci ducimus debitis error maxime, nihil. Maxime dolores, a id nam porro.</p>
+
+	<div class="tab_container">
+		<div id="tab1" class="tab_content">
+		<table class="tablesorter" cellspacing="0">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Имя</th>
+					<th>Фамилия</th>
+					<th>Отчество</th>
+					<th>Логин</th>
+					<th>Адрес</th>
+					<th>Дата рождения</th>
+					<th>Телефон</th>
+					<th>Email</th>
+					<th>Активность</th>
+					<th>Роль</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td><input type="checkbox" value="{{user.id}}"></td>
+						<td>{{user.fname}}</td>
+						<td>{{user.lname}}</td>
+						<td>{{user.login}}</td>
+
+						{% if user.patronymic %}
+							<td>{{user.patronymic}}</td>
+						{% else %}
+							<td>Нет данных</td>
+						{% endif %}
+
+						{% if user.address %}
+							<td>{{user.address}}</td>
+						{% else %}
+							<td>Нет данных</td>
+						{% endif %}
+
+						{% if user.birthday %}
+							<td>{{user.birthday}}</td>
+						{% else %}
+							<td>Нет данных</td>
+						{% endif %}
+
+						{% if user.phone %}
+							<td>{{user.phone}}</td>
+						{% else %}
+							<td>Нет данных</td>
+						{% endif %}
+
+						<td>{{user.email}}</td>
+
+						{% if user.status == 1 %}
+							<td><input type="checkbox" checked="checked" name="{{login}}" value="{{user.status}}"></td>
+						{% else %}
+							<td><input type="checkbox" name="{{login}}" value="{{user.status}}"></td>
+						{% endif %}
+
+						<td>{{user.user_role}}</td>
+
+
+
+						<td>
+							<input type="image" src="{{dir}}/imgs/admin/icn_edit.png" title="Изменить">
+							<input type="image" src="{{dir}}/imgs/admin/icn_trash.png" title="Удалить">
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<footer>
+			<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
+			<a href="#" style="margin-right: 10px;">
+				<i class="fa fa-angle-left"></i> Туда
+			</a>
+			{% for i in 1..countUsers %}
+				{{ i }}
+			{% endfor %}
+			<a href="#" style="margin-left: 10px;">Сюда 
+				<i class="fa fa-angle-right"></i>
+			</a>
+			</h3>
+		</footer>
+		</div>
 	</div>
 </article>
+
+<script>
+</script>
+
+<script>
+	$('body').trigger('ajax');
+</script>
 
 
 {% if request == false %}

@@ -19,4 +19,8 @@ class Model_index extends Model_abstractDb{
 		}
 	}
 
+	public function getUserData($id){
+		return $this->orm->select("SELECT * FROM `prefix_users` WHERE `id` = ?", array($id));
+	}
+
 }

@@ -1,11 +1,19 @@
 /* Essentials */
 
+.preloader{
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 100px auto 0;
+}
+
 html, div, map, dt, isindex, form, header, aside, section, section, article, footer {  
     display: block;  
 } 
 
 html, body {
 height: 100%;
+min-width: 960px;
 margin: 0;
 padding: 0;
 font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
@@ -256,14 +264,15 @@ text-transform: uppercase;
 text-shadow: 0 1px 0 #fff;
 font-size: 13px;
 margin: 10px 25px 10px 6%;
+transition: all .1s;
+cursor: pointer;
+background: url(../../imgs/admin/secondary_bar.png);
+border-radius: 3px;
+padding: 10px 0 10px 10px;
 }
 
 .toggleLink{
-	transition: all .1s;
-	cursor: pointer;
-	background: url(../../imgs/admin/secondary_bar.png);
-	border-radius: 3px;
-	padding: 10px 0 10px 10px;
+
 }
 
 #sidebar .toggleLink:hover {
@@ -427,7 +436,8 @@ color: #666;}
 /* Module Widths */
 
 .width_full {
-width: 95%;
+max-width: 95%;
+min-width: 910px;
 }
 
 .width_half {
