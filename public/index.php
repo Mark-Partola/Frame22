@@ -7,6 +7,7 @@ Application::init();
 
 //админ
 Request('GET', '/admin','Admin\Admin_index');
+Request('GET', '/admin/{content}','Admin\Admin_index:getContent');
 
 Request('GET', '/','Ctrl_index');
 

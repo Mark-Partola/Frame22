@@ -1,0 +1,10 @@
+{% if request == false %}
+	{% include 'default/admin/header.html' %}
+	<section id="main" class="column">
+{% endif %}
+
+<h4 class="alert_info">Страница управления контентом</h4>
+
+{% if request == false %}
+	</section>
+{% endif %}
