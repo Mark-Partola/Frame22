@@ -34,6 +34,7 @@ text-decoration: underline;
 /* Header */
 
 header#header {
+	overflow: hidden;
 height: 55px;
 width: 100%;
 background: #222222 url(../../imgs/admin/header_bg.png) repeat-x;
@@ -67,13 +68,14 @@ background: url(../../imgs/admin/header_shadow.png) no-repeat left top;
 }
 
 .btn_view_site {
-float: left;
 }
 
 .btn_view_site a {
-display: block;
-margin-top: 9px;
+display: inline-block;
+position: absolute;
+right: 10px;
 padding: 3px 15px;
+margin-top: 10px;
 height: 27px;
 border-radius: 20px;
 border: 1px solid #222;
@@ -253,24 +255,19 @@ color: #1F1F20;
 text-transform: uppercase;
 text-shadow: 0 1px 0 #fff;
 font-size: 13px;
-margin: 10px 0 10px 6%;
-display: block;
-float: left;
-width: 90%;
+margin: 10px 25px 10px 6%;
 }
 
-.toggleLink {
-color: #999999;
-font-size: 10px;
-text-decoration: none;
-display: block;
-float: right;
-margin-right: 2%
+.toggleLink{
+	transition: all .1s;
+	cursor: pointer;
+	background: url(../../imgs/admin/secondary_bar.png);
+	border-radius: 3px;
+	padding: 10px 0 10px 10px;
 }
 
 #sidebar .toggleLink:hover {
-color: #77BACE;
-text-decoration: none;
+	color: #77BACE;
 }
 
 #sidebar ul {
@@ -284,24 +281,27 @@ margin: 0 0 0 12%; padding: 0;
 }
 
 #sidebar li a {
-color: #666666;
-padding-left: 25px;
+color: #444;
+padding: 5px 5px 5px 25px;
 text-decoration: none;
 display: inline-block;
 height: 17px;
 line-height: 17px;
+font-size: 14px;
 text-shadow: 0 1px 0 #fff;
-margin: 2px 0;
+margin-bottom: 10px;
 }
 
 #sidebar li a:hover {
-color: #444444;
+color: #222;
 }
 
 /* Sidebar Icons */
 
 #sidebar li.icn_new_article a {
 background: url(../../imgs/admin/icn_new_article.png) no-repeat center left;
+-webkit-background-size: 20px;
+background-size: 20px;
 }
 #sidebar li.icn_edit_article a {
 background: url(../../imgs/admin/icn_edit_article.png) no-repeat center left;
