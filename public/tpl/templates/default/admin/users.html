@@ -10,8 +10,8 @@
 	<header><h3>Пользователи</h3></header>
 
 	<div class="tab_container">
-		<div id="tab1" class="tab_content">
-		<table class="tablesorter" cellspacing="0">
+		<div id="j-users-container">
+		<table class="tablesorter" cellspacing="0" id="j-users-table">
 			<thead>
 				<tr>
 					<th></th>
@@ -79,6 +79,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
+		</div>
 		<footer>
 			<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
 			{% if countUsers != 1 %}
@@ -98,7 +99,7 @@
 			{% endif %}
 			</h3>
 		</footer>
-		</div>
+
 	</div>
 </article>
 
@@ -165,6 +166,7 @@
 		console.log(pageUser);
 
 		e.preventDefault();
+		$('body').trigger('getUsersByOffset', pageUser);
 
 	});
 
@@ -177,6 +179,22 @@
 		console.log(pageUser);
 
 		e.preventDefault();
+		$('body').trigger('getUsersByOffset', pageUser);
+	});
+
+
+	//запрос с сервера пользователей по смещению
+	$('body').on('getUsersByOffset', function(e, offset){
+		var offsetUser = offset-1;
+		var workArea = $()
+		$.ajax({
+			'url' : $('.j-dir').html()+'/admin/users?usersOffset='+offsetUser,
+			success: function(data){
+				var fragment = $('<div>').html(data);
+				$('#j-users-container').html($('#j-users-table', fragment));
+				$('body').trigger('ajax');
+			}
+		});
 	});
 
 </script>

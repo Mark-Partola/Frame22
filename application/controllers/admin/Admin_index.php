@@ -9,7 +9,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 
 	private function getAllUsers(){
 		$offset = 0;
-		$limit = 1;
+		$limit = 2;
 		if(isset($_GET['usersOffset']))
 			$offset = $_GET['usersOffset'];
 
@@ -33,7 +33,6 @@ class Admin_index extends \Controllers\Ctrl_base{
 
 	public function getContent($content){
 		if(!in_array(1, $_SESSION['auth']['action'])) header('Location: '.ROUTE_ROOT.'/auth/login');
-		sleep(1);
 		$request = false;
 		if(isAjax())
 			$request = true;
