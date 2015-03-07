@@ -55,6 +55,20 @@
 	background-color: #888;
 }
 
+.message-box{
+	display: none;
+	font-size: 20px;
+	border-radius: 5px;
+	text-align: center;
+	width: 200px;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	padding: 10px 50px;
+	background-color: rgba(0,0,0,.5);
+	color: #fff;
+}
+
 /*END MY*/
 
 html, div, map, dt, isindex, form, header, aside, section, section, article, footer {  

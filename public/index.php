@@ -8,6 +8,7 @@ Application::init();
 //админ
 Request('GET', '/admin','Admin\Admin_index');
 Request('GET', '/admin/{content}','Admin\Admin_index:getContent');
+Request('POST', '/admin/users/create','Admin\Admin_index:createUser');
 
 Request('GET', '/','Ctrl_index');
 

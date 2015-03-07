@@ -123,6 +123,10 @@
 				<input type="text" name="pass" placeholder="Пароль">
 			</div>
 			<div class="module_content-field">
+				<label>E-mail<span>*</span></label>
+				<input type="text" name="email" placeholder="Электронная почта">
+			</div>
+			<div class="module_content-field">
 				<label>Роль в системе<span>*</span></label>
 				<div class="select-wrapper">
 					<select name="role" id="" class="module_content-select">
@@ -133,7 +137,7 @@
 				</div>
 			</div>
 			<div class="module_content-field">
-				<input type="button" value="Создать" class="button">
+				<input type="button" value="Создать" class="button" id="j-create-user">
 			</div>
 		</fieldset>
 	</div>
@@ -142,15 +146,35 @@
 <script>
 
 	(function(){
-		var workArea = $('.j-register');
-		var formData = {};
-		formData.fname = workArea.find('[name=fname]').val();
-		formData.lname = workArea.find('[name=lname]').val();
-		formData.login = workArea.find('[name=login]').val();
-		formData.pass  = workArea.find('[name=pass]').val();
-		formData.role  = workArea.find('[name=role]').val();
+		$('#j-create-user').on('click', function(){
+			var workArea = $('.j-register');
+			var formData = {};
+			formData.fname = workArea.find('[name=fname]').val();
+			formData.lname = workArea.find('[name=lname]').val();
+			formData.login = workArea.find('[name=login]').val();
+			formData.pass  = workArea.find('[name=pass]').val();
+			formData.email = workArea.find('[name=email]').val();
+			formData.role  = workArea.find('[name=role]').val();
+			console.log(JSON.stringify(formData));
+			$.ajax({
+				type: "POST",
+				data: JSON.stringify(formData),
+				url: $('.j-dir').html() + '/admin/users/create',
+				success: function(data){
+					data = JSON.parse(data);
 
-		console.log(formData);
+					var bgc = '#CE5A47';
+					if(data.status){
+						var bgc = '#47CE5A';
+					}
+					$('.message-box').html(data.title);
+					$('.message-box').css({
+						'display': 'block',
+						'background-color': bgc
+					}, 1000);
+				}
+			});
+		});
 	})()
 
 	/*

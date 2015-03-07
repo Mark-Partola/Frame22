@@ -62,4 +62,15 @@ class Admin_index extends \Controllers\Ctrl_base{
 		echo $template->render($args);
 
 	}
+
+	public function createUser(){
+		$raw = file_get_contents('php://input');
+		if ( $raw ) {
+			$decode = json_decode($raw);
+		}
+
+		$model = new \Models\User\Users();
+		
+		echo json_encode($model->createUser($decode));
+	}
 }

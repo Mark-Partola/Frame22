@@ -55,4 +55,29 @@ class Users extends \Models\Model_abstractDb{
 		}
 	}
 
+	public function createUser($data){
+		try{
+			$sql = "INSERT INTO `prefix_users`(`login`, `password`, `fname`,`lname`, `email`,`role`)
+						VALUES(:login, :password,:fname, :lname, :email, :role)";
+
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindParam(':login', $data->login, \PDO::PARAM_STR);
+			$stmt->bindParam(':password', $data->pass, \PDO::PARAM_STR);
+			$stmt->bindParam(':fname', $data->fname, \PDO::PARAM_STR);
+			$stmt->bindParam(':lname', $data->lname, \PDO::PARAM_STR);
+			$stmt->bindParam(':email', $data->email, \PDO::PARAM_STR);
+			$stmt->bindParam(':role', $data->role, \PDO::PARAM_INT);
+
+			$stmt->execute();
+
+			if($stmt->rowCount())
+				return array('title'=>'Пользователь создан!', 'status' => 1);
+
+			return array('title'=>'Произошла ошибка!', 'status' => 0);
+
+		}catch(\Exception $e){
+			return array('title'=>'Произошла ошибка!', 'status' => 0);
+		}
+	}
+
 }
