@@ -43,4 +43,16 @@ class Users extends \Models\Model_abstractDb{
 
 	}
 
+	public function getRoles(){
+		try{
+			$sql = "SELECT * FROM
+						`prefix_roles`";
+
+			return $this->db->query($sql)->fetchAll();
+
+		}catch(\Exception $e){
+
+		}
+	}
+
 }

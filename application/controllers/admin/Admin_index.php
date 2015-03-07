@@ -18,6 +18,11 @@ class Admin_index extends \Controllers\Ctrl_base{
 		return $allUsers;
 	}
 
+	private function getRoles(){
+		$model = new \Models\User\Users();
+		return $model->getRoles();
+	}
+
 	public function index(){
 
 		if(!in_array(1, $_SESSION['auth']['action'])) header('Location: '.ROUTE_ROOT.'/auth/login');
@@ -51,6 +56,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 		if($content == 'users'){
 			$args['users'] = $arrayUsers;
 			$args['countUsers'] = $countAllUsers;
+			$args['roles'] = $this->getRoles();
 		}
 
 		echo $template->render($args);

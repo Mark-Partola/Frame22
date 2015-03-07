@@ -7,6 +7,56 @@
 	margin: 100px auto 0;
 }
 
+.module_content-field input{
+	margin-bottom: 10px !important;
+	width: 310px;
+	padding: 5px 3px;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+.module_content-field label span{
+	color: #f00;
+	margin-left: 10px;
+}
+.select-wrapper{
+	width: 323px;
+	overflow: hidden;
+	border: 1px #77BACE solid;
+	margin-left: 10px;
+	background-color: #fff;
+}
+.module_content-select{
+	margin-left: 0;
+	padding: 6px 3px;
+	height: auto;
+	width: 335px;
+	background-color: #fff;
+	border: none;
+}
+
+.width_quarter{
+	min-width: 400px;
+}
+
+.button{
+	width: 323px !important;
+	display: block;
+	padding: 7px;
+	margin: 20px 10px;
+	border: none;
+	outline: none;
+	background-color: #77BACE;
+	color: #fff;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+.button:hover{
+	background-color: #888;
+}
+
+/*END MY*/
+
 html, div, map, dt, isindex, form, header, aside, section, section, article, footer {  
     display: block;  
 } 
@@ -710,34 +760,23 @@ margin: 10px 0;
 
 fieldset label {
 display: block;
-float: left;
-width: 200px;
 height: 25px;
 line-height: 25px;
 text-shadow: 0 1px 0 #fff;
 font-weight: bold;
 padding-left: 10px;
-margin: -5px 0 5px 0;
+margin: 5px 0px 2px 5px;
 text-transform: uppercase;
 }
 
 fieldset input[type=text] {
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
-border: 1px solid #BBBBBB;
-height: 20px;
-color: #666666;
--webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
--moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
-padding-left: 10px;
-background-position: 10px 6px;
-margin: 0;
-display: block;
-float: left;
-width: 96%;
-margin: 0 10px;
+	border: 1px solid #77BACE !important;
+	background-color: #fff;
+	height: 20px;
+	color: #444;
+	padding-left: 10px;
+	display: block;
+	margin: 0 10px;
 }
 
 fieldset input[type=text]:focus {
