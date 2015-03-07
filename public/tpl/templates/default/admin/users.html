@@ -34,13 +34,14 @@
 						<td><input type="checkbox" value="{{user.id}}"></td>
 						<td>{{user.fname}}</td>
 						<td>{{user.lname}}</td>
-						<td>{{user.login}}</td>
 
 						{% if user.patronymic %}
 							<td>{{user.patronymic}}</td>
 						{% else %}
 							<td>Нет данных</td>
 						{% endif %}
+
+						<td>{{user.login}}</td>
 
 						{% if user.address %}
 							<td>{{user.address}}</td>
@@ -70,8 +71,6 @@
 
 						<td>{{user.user_role}}</td>
 
-
-
 						<td>
 							<input type="image" src="{{dir}}/imgs/admin/icn_edit.png" title="Изменить">
 							<input type="image" src="{{dir}}/imgs/admin/icn_trash.png" title="Удалить">
@@ -82,15 +81,21 @@
 		</table>
 		<footer>
 			<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
-			<a href="#" style="margin-right: 10px;">
-				<i class="fa fa-angle-left"></i> Туда
-			</a>
-			{% for i in 1..countUsers %}
-				{{ i }}
-			{% endfor %}
-			<a href="#" style="margin-left: 10px;">Сюда 
-				<i class="fa fa-angle-right"></i>
-			</a>
+			{% if countUsers != 1 %}
+				<a href="#" style="margin-right: 10px;" class="j-usersNav-link" data-dir="left">
+					<i class="fa fa-angle-left"></i> Туда
+				</a>
+
+				{% for i in 1..countUsers %}
+
+						<a href="#" data-pos="{{i}}" class="j-pagination">{{ i }}</a>
+
+				{% endfor %}
+
+				<a href="#" style="margin-left: 10px;" class="j-usersNav-link" data-dir="right">Сюда 
+					<i class="fa fa-angle-right"></i>
+				</a>
+			{% endif %}
 			</h3>
 		</footer>
 		</div>
@@ -98,6 +103,82 @@
 </article>
 
 <script>
+
+	/*
+	* Навигация по пользователям
+	*/
+	var pageUser = 1; //текущая страница
+	var hidden; //скрытая кнопка
+
+	hideDirectionButton(); //сразу активируем, т.к первая страница, нужно скрыть кнопку влево
+
+	function hideDirectionButton(count){
+
+		var direction;
+
+		//определяем границу
+		if(pageUser === 1){
+			direction = 'left'
+		}else if(pageUser === count){
+			direction = 'right'
+		}
+
+		//управляем показать/скрыть в зависимости от границы
+		if(hidden)
+			hidden.css({
+				'opacity': 1,
+				'pointer-events': 'auto'
+			});
+
+		var what = $('.j-usersNav-link[data-dir='+direction+']');
+		what.css({
+			'opacity': 0,
+			'pointer-events': 'none'
+		});
+
+		hidden = what;
+
+		//подсветка активного пункта
+		var buttonPagination = $('.j-pagination');
+		buttonPagination.css({
+			'color': '#77BACE',
+			'pointer-events': 'auto'
+		});
+		buttonPagination.eq(pageUser-1).css({
+			'color': '#999',
+			'pointer-events': 'none'
+		});
+	}
+
+	$('.j-usersNav-link').on('click', function(e){
+		var direction = $(this).data('dir');
+		if(direction === 'right'){
+			if(pageUser < {{countUsers}})
+				pageUser++;
+		} else {
+			if(pageUser > 1)
+				pageUser--;
+		}
+
+		hideDirectionButton({{countUsers}});
+
+		console.log(pageUser);
+
+		e.preventDefault();
+
+	});
+
+	$('.j-pagination').on('click', function(e){
+
+		pageUser = $(this).data('pos');
+
+		hideDirectionButton({{countUsers}});
+
+		console.log(pageUser);
+
+		e.preventDefault();
+	});
+
 </script>
 
 <script>

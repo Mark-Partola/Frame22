@@ -9,7 +9,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 
 	private function getAllUsers(){
 		$offset = 0;
-		$limit = 2;
+		$limit = 1;
 		if(isset($_GET['usersOffset']))
 			$offset = $_GET['usersOffset'];
 

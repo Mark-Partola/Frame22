@@ -3,6 +3,9 @@
 
 class Users extends \Models\Model_abstractDb{
 
+	/*
+	* Выборка всех пользователей, также выбор общего их количества
+	*/
 	public function getAllUsers($offset, $limit){
 
 		try{
@@ -24,8 +27,9 @@ class Users extends \Models\Model_abstractDb{
 
 			$numRows = $this->db->query("SELECT count(*) as `count` FROM `prefix_users`")->fetch();
 
+			$pages = ceil($numRows['count'] / $limit);
 
-			$result['count'] = $numRows['count'];
+			$result['count'] = $pages;
 
 			return $result;
 
