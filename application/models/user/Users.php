@@ -16,7 +16,11 @@ class Users extends \Models\Model_abstractDb{
 
 			$stmt = $this->db->prepare($sql);
 
-			$offset = (int)$offset;
+			if($offset == 1 || $offset == 0){
+				$offset = 0;
+			}else
+				$offset = ($offset-1)*$limit;
+
 
 			$stmt->bindParam(':offset', $offset, \PDO::PARAM_INT);
 			$stmt->bindParam(':res', $limit, \PDO::PARAM_INT);

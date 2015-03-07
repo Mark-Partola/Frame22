@@ -176,8 +176,6 @@
 
 		hideDirectionButton({{countUsers}});
 
-		console.log(pageUser);
-
 		e.preventDefault();
 		$('body').trigger('getUsersByOffset', pageUser);
 	});
@@ -185,8 +183,7 @@
 
 	//запрос с сервера пользователей по смещению
 	$('body').on('getUsersByOffset', function(e, offset){
-		var offsetUser = offset-1;
-		var workArea = $()
+		var offsetUser = offset;
 		$.ajax({
 			'url' : $('.j-dir').html()+'/admin/users?usersOffset='+offsetUser,
 			success: function(data){
