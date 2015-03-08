@@ -149,28 +149,48 @@
 		<fieldset class="j-register">
 			<div class="module_content-field">
 				<label>Название роли<span>*</span></label>
-				<input type="text" name="fname" placeholder="Название роли">
+				<input id="j-title-action" type="text" name="title" placeholder="Название роли">
 			</div>
 			<div class="module_content-field">
 				<label>Разрешенные действия</label>
 				<div class="wrapper-chechbox" style="border-bottom: 1px dashed #999; width: 85%; margin-bottom: 20px;">
-					<label class="title-role label-button" style="color:#47CE5A">Отметить все</label>
-					<label class="title-role label-button" style="color:#CE5A47">Сбросить все</label>
+					<label id="j-check-all-actions" class="title-role label-button" style="color:#47CE5A">Отметить все</label>
+					<label id="j-uncheck-all-actions" class="title-role label-button" style="color:#CE5A47">Сбросить все</label>
 				</div>
 				<div class="wrapper-chechbox">
 					{% for action in actions %}
-						<label class="title-role">{{action.title}}<input name="" value="" type="checkbox"></label>
+						<label class="title-role">{{action.title}}<input name="action" value="{{action.id}}" type="checkbox" class="j-action"></label>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="module_content-field">
-				<input type="button" value="Создать" class="button" id="j-create-user">
+				<input type="button" value="Создать" class="button" id="j-create-role">
 			</div>
 		</fieldset>
 	</div>
 </article>
 
 <script>
+
+	(function(){
+		$('#j-check-all-actions').on('click', function(){
+			$('.j-action').prop('checked', true);
+		});
+		$('#j-uncheck-all-actions').on('click', function(){
+			$('.j-action').prop('checked', false);
+		});
+		$('#j-create-role').on('click', function(){
+			var actions = {};
+			actions.ids = [];
+			$('[name=action]:checked').each(function(){
+				actions.ids.push($(this).val());
+			});
+			var title = $('#j-title-action').val();
+			actions.title = title;
+			var jsonActions = JSON.stringify(actions);
+			console.log(jsonActions);
+		});
+	})();
 
 	(function(){
 		$('#j-create-user').on('click', function(){
@@ -202,7 +222,7 @@
 				}
 			});
 		});
-	})()
+	})();
 
 	/*
 	* Навигация по пользователям
