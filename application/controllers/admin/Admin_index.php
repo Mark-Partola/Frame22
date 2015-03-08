@@ -9,7 +9,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 
 	private function getAllUsers(){
 		$offset = 0;
-		$limit = 2;
+		$limit = 5;
 		if(isset($_GET['usersOffset']))
 			$offset = $_GET['usersOffset'];
 
@@ -21,6 +21,10 @@ class Admin_index extends \Controllers\Ctrl_base{
 	private function getRoles(){
 		$model = new \Models\User\Users();
 		return $model->getRoles();
+	}
+	private function getActions(){
+		$model = new \Models\User\Users();
+		return $model->getActions();
 	}
 
 	public function index(){
@@ -57,6 +61,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 			$args['users'] = $arrayUsers;
 			$args['countUsers'] = $countAllUsers;
 			$args['roles'] = $this->getRoles();
+			$args['actions'] = $this->getActions();
 		}
 
 		echo $template->render($args);
@@ -70,7 +75,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 		}
 
 		$model = new \Models\User\Users();
-		
+
 		echo json_encode($model->createUser($decode));
 	}
 }

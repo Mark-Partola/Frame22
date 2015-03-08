@@ -55,6 +55,18 @@ class Users extends \Models\Model_abstractDb{
 		}
 	}
 
+	public function getActions(){
+		try{
+			$sql = "SELECT * FROM
+						`prefix_actions`";
+
+			return $this->db->query($sql)->fetchAll();
+
+		}catch(\Exception $e){
+
+		}
+	}
+
 	public function createUser($data){
 		try{
 			$sql = "INSERT INTO `prefix_users`(`login`, `password`, `fname`,`lname`, `email`,`role`)
