@@ -92,4 +92,89 @@ class Users extends \Models\Model_abstractDb{
 		}
 	}
 
+	public function createRole($title, $actions){
+		try{
+
+			$maxPriv = $this->db->query("SELECT MAX(`privileges`) as `last_priv` FROM `prefix_roles`")->fetch();
+			$maxPriv = $maxPriv['last_priv'] + 1;
+
+			$stmt = $this->db->prepare("INSERT INTO `prefix_roles`(`title`, `privileges`)
+						VALUES(:title, '$maxPriv')");
+			$stmt->bindParam(':title', $title, \PDO::PARAM_STR);
+			$stmt->execute();
+
+			$lastId = $this->db->lastInsertId();
+
+			foreach ($actions as $action) {
+				$stmt = $this->db->prepare("INSERT INTO `prefix_privileges`(`id_role`, `action`)
+						VALUES(:role, :action)");
+				$stmt->bindValue(':role', $lastId, \PDO::PARAM_INT);
+				$stmt->bindValue(':action', $action, \PDO::PARAM_INT);
+
+				$stmt->execute();
+			}
+
+			return array('title'=>'Пользователь создан!', 'status' => 1);
+
+		}catch(\Exception $e){
+			return array('title'=>'Произошла ошибка!', 'status' => 0);
+		}
+	}
+
+
+	/*контент*/
+
+	public function getCategories() {
+
+		$sql = "SELECT *
+				FROM `prefix_category`
+				WHERE `id_parent` = 0";
+
+		$stmt = $this->db->query($sql);
+		$result = $stmt->fetchAll();
+
+		$endResult = array();
+
+		foreach ($result as $item) {
+
+			$rsChildren = $this->getChildrenForCat($item['id']);
+
+			if($rsChildren) {
+				$item['children'] = $rsChildren;
+			}
+
+			$endResult[] = $item;
+		}
+
+		return $endResult;
+
+	}
+
+	public function getChildrenForCat($id) {
+
+		$sql = "SELECT *
+				FROM `prefix_category`
+				WHERE
+				`id_parent` = $id";
+
+		$stmt = $this->db->query($sql);
+		$result = $stmt->fetchAll();
+
+		$endResult = array();
+
+		foreach ($result as $item) {
+
+			$rsChildren = $this->getChildrenForCat($item['id']);
+
+			if($rsChildren) {
+				$item['children'] = $rsChildren;
+			}
+
+			$endResult[] = $item;
+		}
+
+		return $endResult;
+
+	}
+
 }

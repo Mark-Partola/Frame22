@@ -1,5 +1,14 @@
 /* Essentials */
+/*категории*/
 
+.cats-toggle{
+	cursor: pointer;
+}
+.cats-toggle ul{
+	display: none;
+}
+
+/*конец категории*/
 .preloader{
 	display: block;
 	width: 100px;
@@ -62,7 +71,7 @@
 	border-radius: 5px;
 	text-align: center;
 	width: 200px;
-	position: absolute;
+	position: fixed;
 	bottom: 10px;
 	left: 10px;
 	padding: 10px 50px;

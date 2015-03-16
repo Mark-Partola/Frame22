@@ -27,6 +27,13 @@ class Admin_index extends \Controllers\Ctrl_base{
 		return $model->getActions();
 	}
 
+	/*контент*/
+	private function getCategories(){
+		$model = new \Models\User\Users();
+		return $model->getCategories();
+	}
+	/*конец контента*/
+
 	public function index(){
 
 		if(!in_array(1, $_SESSION['auth']['action'])) header('Location: '.ROUTE_ROOT.'/auth/login');
@@ -63,6 +70,9 @@ class Admin_index extends \Controllers\Ctrl_base{
 			$args['roles'] = $this->getRoles();
 			$args['actions'] = $this->getActions();
 		}
+		elseif($content == 'categories'){
+			$args['treeCats'] = $this->getCategories();
+		}
 
 		echo $template->render($args);
 
@@ -77,5 +87,16 @@ class Admin_index extends \Controllers\Ctrl_base{
 		$model = new \Models\User\Users();
 
 		echo json_encode($model->createUser($decode));
+	}
+
+	public function createAction(){
+		$raw = file_get_contents('php://input');
+		if ( $raw ) {
+			$decode = json_decode($raw);
+		}
+
+		$model = new \Models\User\Users();
+
+		echo json_encode($model->createRole($decode->title, $decode->ids));
 	}
 }

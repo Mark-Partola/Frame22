@@ -1,0 +1,31 @@
+{% if request == false %}
+	{% include 'default/admin/header.html' %}
+	<section id="main" class="column">
+{% endif %}
+
+
+<h4 class="alert_info">Менеджер категорий</h4>
+
+<article class="module width_full">
+
+	<div class="module_content">
+		<ul style="font-size: 26px; color: #444; list-style:none; padding: 0;">
+			{% include "default/admin/includes/categories-tree.html"  with {'treeCats':treeCats} only %}
+		</ul>
+	</div>
+
+</article>
+
+{% if request == false %}
+	</section>
+{% endif %}
+
+<script>
+
+	$('.cats-toggle a').on('click', function(e){
+		$(this).siblings('ul').slideToggle(200);
+		$(this).siblings('i').toggleClass('fa-minus');
+	});
+
+</script>
+

@@ -1,0 +1,21 @@
+{% for elem in treeCats %}
+	<li class="cats-toggle">
+		{% if elem.children %}
+			<i class="fa fa-plus" style="font-size: 14px;"></i>
+			<a href="#" style="display: inline-block; margin-bottom: 5px;  margin-top: 5px;">{{elem.title}}</a>
+			<span style="font-size: 12px; margin-left: 10px;">(Id - {{elem.id}})</span>
+		{% else %}
+			<a href="#" style="display: inline-block; padding-left: 17px; margin-bottom: 5px;  margin-top: 5px;">{{elem.title}}</a>
+			<span style="font-size: 12px; margin-left: 10px;">(Id - {{elem.id}})</span>
+		{% endif %}
+
+		{% if elem.children %}
+			<ul style="margin-left: 20px; list-style:none; padding: 0; font-size: 18px;" class="cats-{{ cycle(['even', 'odd'], loop.index) }}">
+
+			{% include "default/admin/includes/categories-tree.html" with {'treeCats': elem.children} %}
+
+			</ul>
+		{% endif %}
+	</li>
+
+{% endfor %}

@@ -187,8 +187,30 @@
 			});
 			var title = $('#j-title-action').val();
 			actions.title = title;
-			var jsonActions = JSON.stringify(actions);
-			console.log(jsonActions);
+
+			$.ajax({
+				type: "POST",
+				data: JSON.stringify(actions),
+				url: $('.j-dir').html() + '/admin/action/create',
+				success: function(data){
+					data = JSON.parse(data);
+
+					var bgc = '#CE5A47';
+					if(data.status){
+						var bgc = '#47CE5A';
+					}
+					$('.message-box').html(data.title);
+					$('.message-box').css({
+						'display': 'block',
+						'background-color': bgc
+					}, 1000);
+
+					setTimeout(function(){
+						$('.message-box').fadeOut();
+					}, 3000);
+				}
+			});
+
 		});
 	})();
 
@@ -219,6 +241,10 @@
 						'display': 'block',
 						'background-color': bgc
 					}, 1000);
+
+					setTimeout(function(){
+						$('.message-box').fadeOut();
+					}, 3000);
 				}
 			});
 		});
