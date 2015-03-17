@@ -8,6 +8,29 @@
 	display: none;
 }
 
+.cats-elements{
+	color: #fff;
+	font-size: 12px;
+	line-height: 1;
+	background-color: #999;
+	padding: 5px;
+	height: 1em;
+	width: 100px;
+	text-align: center;
+	margin-left: 20px;
+}
+
+.cats-id{
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.cats-title{
+	display: inline-block;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
 /*конец категории*/
 .preloader{
 	display: block;

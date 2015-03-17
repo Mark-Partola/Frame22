@@ -177,4 +177,26 @@ class Users extends \Models\Model_abstractDb{
 
 	}
 
+
+	/*
+	*	Получаем идентификаторы категорий, в которых присутствуют элементы
+	*/
+	public function getCategoriesWithElems() {
+
+		$sql = "SELECT DISTINCT(`id_cats`)
+				FROM `prefix_articles_in_cats`";
+
+		$stmt = $this->db->query($sql);
+
+		$result = $stmt->fetchAll();
+
+		$newResult = array();
+
+		foreach ($result as $key => $value) {
+			$newResult[] = $value['id_cats'];
+		}
+
+		return $newResult;
+	}
+
 }

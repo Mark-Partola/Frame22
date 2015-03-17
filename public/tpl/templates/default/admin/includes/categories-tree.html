@@ -2,11 +2,17 @@
 	<li class="cats-toggle">
 		{% if elem.children %}
 			<i class="fa fa-plus" style="font-size: 14px;"></i>
-			<a href="#" style="display: inline-block; margin-bottom: 5px;  margin-top: 5px;">{{elem.title}}</a>
-			<span style="font-size: 12px; margin-left: 10px;">(Id - {{elem.id}})</span>
+		{% endif %}
+
+		{% if elem.children %}
+			<a href="#" class="cats-title">{{elem.title}}</a>
 		{% else %}
-			<a href="#" style="display: inline-block; padding-left: 17px; margin-bottom: 5px;  margin-top: 5px;">{{elem.title}}</a>
-			<span style="font-size: 12px; margin-left: 10px;">(Id - {{elem.id}})</span>
+			<a href="#" class="cats-title" style="padding-left: 17px;">{{elem.title}}</a>
+		{% endif %}
+		<span class="cats-id">(Id - {{elem.id}})</span>
+
+		{% if elem.id in idsCats %}
+			<div class="cats-elements">Элементы</div>
 		{% endif %}
 
 		{% if elem.children %}

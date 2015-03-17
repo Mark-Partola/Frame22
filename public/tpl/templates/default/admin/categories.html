@@ -9,10 +9,70 @@
 <article class="module width_full">
 
 	<div class="module_content">
-		<ul style="font-size: 26px; color: #444; list-style:none; padding: 0;">
-			{% include "default/admin/includes/categories-tree.html"  with {'treeCats':treeCats} only %}
+		<ul style="font-size: 26px; color: #444; list-style:none; padding: 0; width: 50%; float: left;">
+			{% include "default/admin/includes/categories-tree.html"  with {'treeCats':treeCats, 'idsCats':catsWithElems} only %}
 		</ul>
+		<div style="width: 40%; float: right; font-size: 15px; color: #000; padding: 30px; margin-top: 30px; background-color: #B5E5EF; border: 1px solid #77BACE;">
+			Структура каталогов контента. Каждый вложенный элемент, наследует свойства всех родительских категорий. Если в категории есть элементы, они выводятся в виде кнопки под названием категории. При нажатии на эту кнопку элементы, находящиеся в текущей категории, будут подгружены в область снизу.
+		</div>
+		<div style="clear:both;"></div>
 	</div>
+
+</article>
+
+<article class="module width_full">
+	<header><h3>Элементы в категории</h3></header>
+	<table class="tablesorter" cellspacing="0" id="j-users-table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Заголовок</th>
+				<th>Автор</th>
+				<th>Контент</th>
+				<th>Статус</th>
+				<th>Дата создания</th>
+				<th>Активность</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td>lorem</td>
+				<td></td>
+			</tr>
+			{% for user in users %}
+				
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	<footer>
+		<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
+		{% if countUsers != 1 %}
+			<a href="#" style="margin-right: 10px;" class="j-usersNav-link" data-dir="left">
+				<i class="fa fa-angle-left"></i> Туда
+			</a>
+
+			{% for i in 1..countUsers %}
+
+					<a href="#" data-pos="{{i}}" class="j-pagination">{{ i }}</a>
+
+			{% endfor %}
+
+			<a href="#" style="margin-left: 10px;" class="j-usersNav-link" data-dir="right">Сюда 
+				<i class="fa fa-angle-right"></i>
+			</a>
+		{% endif %}
+		</h3>
+	</footer>
 
 </article>
 

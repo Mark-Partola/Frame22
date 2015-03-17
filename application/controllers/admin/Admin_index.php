@@ -32,6 +32,12 @@ class Admin_index extends \Controllers\Ctrl_base{
 		$model = new \Models\User\Users();
 		return $model->getCategories();
 	}
+
+	private function getCategoriesWithElems(){
+		$model = new \Models\User\Users();
+		return $model->getCategoriesWithElems();
+	}
+
 	/*конец контента*/
 
 	public function index(){
@@ -72,6 +78,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 		}
 		elseif($content == 'categories'){
 			$args['treeCats'] = $this->getCategories();
+			$args['catsWithElems'] = $this->getCategoriesWithElems();
 		}
 
 		echo $template->render($args);
