@@ -7,12 +7,14 @@ Application::init();
 
 //админ
 Request('GET', '/admin','Admin\Admin_index');
-Request('GET', '/admin/{content}','Admin\Admin_index:getContent');
+Request('GET', '/admin/{content}','Admin\Admin_index:getContent'); //assert
 
 //Создать пользователя
 Request('POST', '/admin/users/create','Admin\Admin_index:createUser');
 //Создать роль
 Request('POST', '/admin/action/create','Admin\Admin_index:createAction');
+//Обновить элемент
+Request('POST', '/admin/content/update/{id}','Admin\Admin_index:updateElem'); //assert
 
 Request('GET', '/','Ctrl_index');
 

@@ -92,7 +92,6 @@ class Admin_index extends \Controllers\Ctrl_base{
 			$args['countElems'] = $countAllUsers;
 		}
 		elseif($content == 'elems'){
-
 			$args['elems'] = $this->getElemsByCats();
 		}
 
@@ -120,5 +119,9 @@ class Admin_index extends \Controllers\Ctrl_base{
 		$model = new \Models\User\Users();
 
 		echo json_encode($model->createRole($decode->title, $decode->ids));
+	}
+
+	public function updateElem($id){
+		//$_POST['title'], $_POST['content'];
 	}
 }

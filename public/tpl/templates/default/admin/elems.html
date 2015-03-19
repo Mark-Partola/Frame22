@@ -13,12 +13,12 @@
 	</thead>
 	<tbody>
 		{% for elem in elems %}
-			<tr>
+			<tr data-id="{{elem.id}}">
 				<td><input type="checkbox" value="{{user.id}}"></td>
 				<td>{{elem.id}}</td>
-				<td>{{elem.title}}</td>
+				<td class="j-elem-title">{{elem.title}}</td>
 				<td>{{elem.author}}</td>
-				<td style="width: 50%;">
+				<td style="width: 50%;" class="j-elem-content">
 					{{ elem.content|length > 500 ? elem.content|slice(0, 500) : elem.content}}..
 				</td>
 
@@ -31,7 +31,7 @@
 				<td>{{elem.create_at}}</td>
 
 				<td>
-					<a href="#callback" class="button j-edit-elem fancybox" style="background: url({{dir}}/imgs/admin/icn_edit.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
+					<a href="#callback" class="button j-edit-elem fancybox"  data-id="{{elem.id}}" style="background: url({{dir}}/imgs/admin/icn_edit.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
 					<a href="#callback" class="button fancybox" style="background: url({{dir}}/imgs/admin/icn_trash.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
 				</td>
 			</tr>
