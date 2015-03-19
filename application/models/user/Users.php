@@ -199,4 +199,24 @@ class Users extends \Models\Model_abstractDb{
 		return $newResult;
 	}
 
+	/*
+	*	Получаем элементы по айди категории
+	*/
+	public function getElemsByCats($id) {
+
+		$sql = "SELECT *
+					FROM `prefix_articles_in_cats` as `cross`
+					INNER JOIN `prefix_article` as `a`
+						ON `cross`.`id_article` = `a`.`id`
+							WHERE `cross`.`id_cats` = :id";
+
+		$stmt = $this->db->prepare($sql);
+		$stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+
+		$stmt->execute();
+
+
+		return $stmt->fetchAll();
+	}
+
 }

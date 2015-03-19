@@ -12,7 +12,7 @@
 		<span class="cats-id">(Id - {{elem.id}})</span>
 
 		{% if elem.id in idsCats %}
-			<div class="cats-elements">Элементы</div>
+			<div class="cats-elements j-cats-elems j-elems" data-id="{{elem.id}}">Элементы</div>
 		{% endif %}
 
 		{% if elem.children %}

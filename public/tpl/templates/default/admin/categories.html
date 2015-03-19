@@ -22,7 +22,8 @@
 
 <article class="module width_full">
 	<header><h3>Элементы в категории</h3></header>
-	<table class="tablesorter" cellspacing="0" id="j-users-table">
+	<div class="j-elems-container">
+	<table class="tablesorter" cellspacing="0" id="j-elems-table">
 		<thead>
 			<tr>
 				<th></th>
@@ -32,48 +33,13 @@
 				<th>Контент</th>
 				<th>Статус</th>
 				<th>Дата создания</th>
-				<th>Активность</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td></td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td>lorem</td>
-				<td></td>
-			</tr>
-			{% for user in users %}
-				
-			{% endfor %}
 		</tbody>
 	</table>
 	</div>
-	<footer>
-		<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
-		{% if countUsers != 1 %}
-			<a href="#" style="margin-right: 10px;" class="j-usersNav-link" data-dir="left">
-				<i class="fa fa-angle-left"></i> Туда
-			</a>
-
-			{% for i in 1..countUsers %}
-
-					<a href="#" data-pos="{{i}}" class="j-pagination">{{ i }}</a>
-
-			{% endfor %}
-
-			<a href="#" style="margin-left: 10px;" class="j-usersNav-link" data-dir="right">Сюда 
-				<i class="fa fa-angle-right"></i>
-			</a>
-		{% endif %}
-		</h3>
-	</footer>
-
 </article>
 
 {% if request == false %}
@@ -87,5 +53,44 @@
 		$(this).siblings('i').toggleClass('fa-minus');
 	});
 
+
+	$('.j-cats-elems').on('click', function(){
+		var id = $(this).data('id');
+
+		/*loadElems({
+			'container': '.j-elems-container',
+			'link': '.j-elemsNav-link',
+			'table': '.j-elems-table',
+			'url': 'elems',
+			'countNav': {{countElems}},
+			'offset': false
+		});*/
+
+		$.ajax({
+			'url' : $('.j-dir').html()+'/admin/elems?catId='+id,
+			success: function(data){
+				var fragment = $('<div>').html(data);
+				$('.j-elems-container').css('opacity', 0);
+				$('.j-elems-container').html($('#j-elems-table', fragment));
+				$('.j-elems-container').animate({'opacity': 1}, 500);
+				$('body').trigger('ajax');
+			}
+		});
+	});
+
 </script>
+
+<!-- Подгрузка в фэнсибокс -->
+<script>
+	$(function(){
+		$('.j-elems-container').on('click', function(e){
+			if($(e.target).is($('.j-edit-elem'))){
+				console.log('clicked');
+				e.preventDefault();
+				$.
+			}
+		});
+	});
+</script>
+
 

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{dir}}/css/admin/layout.css" type="text/css"/>
 	<link rel="stylesheet" href="{{dir}}/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
 	<link rel="shortcut icon" href="{{dir}}/imgs/admin/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="{{dir}}/libs/fancybox/jquery.fancybox.css" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="{{dir}}/css/admin/ie.css" type="text/css" media="screen" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,6 +18,7 @@
 	<script src="{{dir}}/js/jquery.tablesorter.min.js"></script>
 	<script src="{{dir}}/js/jquery.equalHeight.js"></script>
 	<script src="{{dir}}/js/admin/common.js"></script>
+	<script src="{{dir}}/libs/fancybox/jquery.fancybox.pack.js"></script>
 	<script>
 
 		$(document).ready(function() {
@@ -25,6 +27,8 @@
 				$(".tablesorter").tablesorter();
 			});
 		});
+
+		$(".fancybox").fancybox();
 
 		$(document).ready(function() {
 
@@ -58,6 +62,8 @@
 
 <body>
 	<div style="display:none;" class="j-dir">{{dir}}</div>
+	<div id="callback">
+	</div>
 	<div class="message-box"></div>
 	<header id="header">
 		<hgroup>

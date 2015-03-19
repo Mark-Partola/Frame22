@@ -38,6 +38,14 @@ class Admin_index extends \Controllers\Ctrl_base{
 		return $model->getCategoriesWithElems();
 	}
 
+	private function getElemsByCats(){
+		$model = new \Models\User\Users();
+		if(isset($_GET['catId']))
+			$id = $_GET['catId'];
+		return $model->getElemsByCats($id);
+	}
+
+
 	/*конец контента*/
 
 	public function index(){
@@ -67,18 +75,25 @@ class Admin_index extends \Controllers\Ctrl_base{
 			'userData' => $this->getUserData($_SESSION['auth']['id'])
 		);
 
-		$arrayUsers = $this->getAllUsers();
-		$countAllUsers = array_pop($arrayUsers);
 
 		if($content == 'users'){
+			$arrayUsers = $this->getAllUsers();
+			$countAllUsers = array_pop($arrayUsers);
 			$args['users'] = $arrayUsers;
 			$args['countUsers'] = $countAllUsers;
 			$args['roles'] = $this->getRoles();
 			$args['actions'] = $this->getActions();
 		}
 		elseif($content == 'categories'){
+			$arrayUsers = $this->getAllUsers();
+			$countAllUsers = array_pop($arrayUsers);
 			$args['treeCats'] = $this->getCategories();
 			$args['catsWithElems'] = $this->getCategoriesWithElems();
+			$args['countElems'] = $countAllUsers;
+		}
+		elseif($content == 'elems'){
+
+			$args['elems'] = $this->getElemsByCats();
 		}
 
 		echo $template->render($args);
