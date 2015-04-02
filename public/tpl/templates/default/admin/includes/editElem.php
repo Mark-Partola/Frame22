@@ -13,6 +13,7 @@
 			<div class="module_content-field">
 				<input type="button" value="Сохранить" class="button" id="j-update-elem">
 			</div>
+			<input type="hidden" name="id" value="<?=$_POST['id']?>">
 		</fieldset>
 	</div>
 </article>

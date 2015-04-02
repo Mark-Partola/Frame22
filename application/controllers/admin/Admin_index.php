@@ -45,6 +45,11 @@ class Admin_index extends \Controllers\Ctrl_base{
 		return $model->getElemsByCats($id);
 	}
 
+	private function getAllProps(){
+		$model = new \Models\Content\Category();
+		return $model->getAllProps();
+	}
+
 
 	/*конец контента*/
 
@@ -91,6 +96,9 @@ class Admin_index extends \Controllers\Ctrl_base{
 			$args['catsWithElems'] = $this->getCategoriesWithElems();
 			$args['countElems'] = $countAllUsers;
 		}
+		elseif($content == 'content'){
+			$args['properties'] = $this->getAllProps();
+		}
 		elseif($content == 'elems'){
 			$args['elems'] = $this->getElemsByCats();
 		}
@@ -122,6 +130,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 	}
 
 	public function updateElem($id){
-		//$_POST['title'], $_POST['content'];
+		$model = new \Models\User\Users();
+		echo json_encode($model->updateElem($id, $_POST['title'], $_POST['content']));
 	}
 }

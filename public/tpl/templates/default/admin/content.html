@@ -6,67 +6,54 @@
 <h4 class="alert_info">Страница управления контентом</h4>
 
 <article class="module width_full">
-	<header><h3>Зарегистрированные пользователи</h3></header>
-
-	<div class="tab_container">
-		<div id="j-users-container">
-		<table class="tablesorter" cellspacing="0" id="j-users-table">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Автор</th>
-					<th>Заголовок</th>
-					<th>Контента</th>
-					<th>Дата</th>
-					<th>Активность</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for user in users %}
-					<tr>
-						<td><input type="checkbox" value="{{user.id}}"></td>
-						<td>{{user.fname}}</td>
-						<td>{{user.lname}}</td>
-
-
-						{% if user.status == 1 %}
-							<td><input type="checkbox" checked="checked" name="{{login}}" value="{{user.status}}"></td>
-						{% else %}
-							<td><input type="checkbox" name="{{login}}" value="{{user.status}}"></td>
-						{% endif %}
-
-						<td>
-							<input type="image" src="{{dir}}/imgs/admin/icn_edit.png" title="Изменить">
-							<input type="image" src="{{dir}}/imgs/admin/icn_trash.png" title="Удалить">
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		</div>
-		<footer>
-			<h3 style="font-size:20px; text-transform: lowercase; margin-top: 3px;">
-			{% if countUsers != 1 %}
-				<a href="#" style="margin-right: 10px;" class="j-usersNav-link" data-dir="left">
-					<i class="fa fa-angle-left"></i> Туда
-				</a>
-
-				{% for i in 1..countUsers %}
-
-						<a href="#" data-pos="{{i}}" class="j-pagination">{{ i }}</a>
-
-				{% endfor %}
-
-				<a href="#" style="margin-left: 10px;" class="j-usersNav-link" data-dir="right">Сюда 
-					<i class="fa fa-angle-right"></i>
-				</a>
-			{% endif %}
-			</h3>
-		</footer>
+	<header><h3>Редактирование названий существующих свойств</h3></header>
+	<div class="module_content">
+		{%for property in properties%}
+			<h4 style="display: inline-block; margin-right: 20px;">{{property.prop_title}}</h4>
+		{%endfor%}
 	</div>
 </article>
 
+<article class="module width_full">
+	<header><h3>Добавить новый материал</h3></header>
+		<div class="module_content">
+				<fieldset>
+					<label>Заголовок</label>
+					<input type="text">
+				</fieldset>
+				<textarea id="textID" name="textID"></textarea>
+				<script>
+				   $(document).ready(function($) {
+				        CKEDITOR.replace( 'textID',{}); 
+				    });
+				</script>
+				<fieldset style="width:48%; float:left; margin-right: 3%;">
+					<label>Категория</label>
+					<select style="width:92%;">
+						<option>Articles</option>
+						<option>Tutorials</option>
+						<option>Freebies</option>
+					</select>
+				</fieldset>
+				<fieldset style="width:48%; float:left;">
+					<label>Tags</label>
+					<input type="text" style="width:92%;">
+				</fieldset><div class="clear"></div>
+		</div>
+	<footer>
+		<button id="j-publish">Опубликовать</button>
+		<select>
+			<option>Draft</option>
+			<option>Published</option>
+		</select>
+	</footer>
+</article>
 {% if request == false %}
 	</section>
 {% endif %}
+<script type="text/javascript" src="{{dir}}/libs/ckeditor/ckeditor.js"></script>
+<script>
+
+	
+
+</script>

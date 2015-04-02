@@ -19,7 +19,8 @@
 				<td class="j-elem-title">{{elem.title}}</td>
 				<td>{{elem.author}}</td>
 				<td style="width: 50%;" class="j-elem-content">
-					{{ elem.content|length > 500 ? elem.content|slice(0, 500) : elem.content}}..
+					<div id="over" style="height: 7em;overflow-y: scroll;line-height: 1em;font-size: 14px;">{{elem.content}}</div>
+					{#{ elem.content|length > 500 ? elem.content|slice(0, 500) : elem.content}#}
 				</td>
 
 				{% if elem.status == 1 %}

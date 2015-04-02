@@ -219,4 +219,34 @@ class Users extends \Models\Model_abstractDb{
 		return $stmt->fetchAll();
 	}
 
+	/*
+	*	Обновление заголовка и контента категории
+	*/
+	public function updateElem($id, $title, $content) {
+
+		try{
+			$sql = "UPDATE `prefix_article` 
+						SET `title` = :title, `content` = :content
+							WHERE `id` = :id";
+
+			$stmt = $this->db->prepare($sql);
+
+			$stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+			$stmt->bindParam(':title', $title, \PDO::PARAM_STR);
+			$stmt->bindParam(':content', $content, \PDO::PARAM_STR);
+
+			$stmt->execute();
+
+			if($stmt->rowCount()){
+				return array('title'=>'Успешно обновлено!', 'status' => 1);
+			}
+
+			return array('title'=>'Произошла ошибка!', 'status' => 0);
+
+		}catch(\Exception $e){
+			return array('title'=>'Произошла ошибка!', 'status' => 0);
+		}
+
+	}
+
 }
