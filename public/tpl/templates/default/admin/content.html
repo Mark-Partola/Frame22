@@ -27,24 +27,28 @@
 				        CKEDITOR.replace( 'textID',{}); 
 				    });
 				</script>
-				<fieldset style="width:48%; float:left; margin-right: 3%;">
-					<label>Категория</label>
-					<select style="width:92%;">
-						<option>Articles</option>
-						<option>Tutorials</option>
-						<option>Freebies</option>
-					</select>
-				</fieldset>
 				<fieldset style="width:48%; float:left;">
 					<label>Tags</label>
 					<input type="text" style="width:92%;">
 				</fieldset><div class="clear"></div>
 		</div>
 	<footer>
-		<button id="j-publish">Опубликовать</button>
-		<select>
+		<button class="footer-button" id="j-publish">Опубликовать</button>
+		<select id="j-active-dropdown">
 			<option>Draft</option>
 			<option>Published</option>
+		</select>
+		<select id="j-cats-dropdown">
+			<option value="">категория1</option>
+			<option value="">категория2</option>
+			<option value="">категория3</option>
+			<option value="">категория4</option>
+			<option value="">категория5</option>
+			<option value="">категория6</option>
+			<option value="">категория7</option>
+			<option value="">категория8</option>
+			<option value="">категория9</option>
+			<option value="">категория10</option>
 		</select>
 	</footer>
 </article>

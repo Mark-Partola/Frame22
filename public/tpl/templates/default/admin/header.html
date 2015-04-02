@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="{{dir}}/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
 	<link rel="shortcut icon" href="{{dir}}/imgs/admin/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="{{dir}}/libs/fancybox/jquery.fancybox.css" />
+
+	<link href="{{dir}}/libs/selectbox/css/jquery.selectbox.css" type="text/css" rel="stylesheet" />
+
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="{{dir}}/css/admin/ie.css" type="text/css" media="screen" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -23,6 +26,7 @@
 
 	<script src="{{dir}}/tpl/templates/default/admin/js/admin.js"></script>
 
+	<script src="{{dir}}/libs/selectbox/js/jquery.selectbox-0.2.js"></script>
 
 	<script>
 
@@ -31,6 +35,9 @@
 			$('body').on('ajax', function(){
 				$(".tablesorter").tablesorter();
 			});
+
+			$("#j-cats-dropdown").add('#j-active-dropdown').selectbox();
+
 		});
 
 		$(".fancybox").fancybox();
