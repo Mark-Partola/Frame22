@@ -28,8 +28,12 @@ class Admin_index extends \Controllers\Ctrl_base{
 	}
 
 	/*контент*/
-	private function getCategories(){
+	private function getCategoriesTree(){
 		$model = new \Models\User\Users();
+		return $model->getCategories();
+	}
+	private function getCategories(){
+		$model = new \Models\Content\Category();
 		return $model->getCategories();
 	}
 
@@ -92,12 +96,13 @@ class Admin_index extends \Controllers\Ctrl_base{
 		elseif($content == 'categories'){
 			$arrayUsers = $this->getAllUsers();
 			$countAllUsers = array_pop($arrayUsers);
-			$args['treeCats'] = $this->getCategories();
+			$args['treeCats'] = $this->getCategoriesTree();
 			$args['catsWithElems'] = $this->getCategoriesWithElems();
 			$args['countElems'] = $countAllUsers;
 		}
 		elseif($content == 'content'){
 			$args['properties'] = $this->getAllProps();
+			$args['cats'] = $this->getCategories();
 		}
 		elseif($content == 'elems'){
 			$args['elems'] = $this->getElemsByCats();
