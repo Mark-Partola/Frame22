@@ -22,6 +22,7 @@
 					<input type="text">
 				</fieldset>
 				<textarea id="textID" name="textID"></textarea>
+				<script type="text/javascript" src="{{dir}}/libs/ckeditor/ckeditor.js"></script>
 				<script>
 				   $(document).ready(function($) {
 				        CKEDITOR.replace( 'textID',{}); 
@@ -48,9 +49,8 @@
 {% if request == false %}
 	</section>
 {% endif %}
-<script type="text/javascript" src="{{dir}}/libs/ckeditor/ckeditor.js"></script>
+
+
 <script>
-
-	
-
+	$('body').trigger('ajax');
 </script>
