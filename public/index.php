@@ -8,6 +8,7 @@ Application::init();
 /***APPLICATION***/
 
 Request('GET', '/products','Application\ProductsController:getAllProducts');
+Request('GET', '/products/all','Application\ProductsController:getAllPropsForElem'); //test
 Request('GET', '/products/{id}','Application\ProductsController:getProductById');
 
 /***END APPLICATION***/

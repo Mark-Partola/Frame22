@@ -21,4 +21,9 @@ class ProductsController extends \Controllers\Ctrl_base{
 
 	}
 
+	public function getAllPropsForElem(){
+		$model = new \Models\Application\Product;
+		print_arr($model->getAllPropsForElem(1));
+	}
+
 }

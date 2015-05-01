@@ -38,6 +38,63 @@ class Product extends \Models\Model_abstractDb{
 
 		return $res;
 
+	}
+
+	public function getAllPropsForElem($id){
+
+		$idCat = $this->orm->select("SELECT `id_cats` 
+										FROM  `prefix_articles_in_cats` 
+											WHERE `id_article` = ?", array($id));
+
+		$result = $this->getProps($idCat);
+
+		$resultSet = array();
+
+		foreach ($result as $key=>$value) {
+			if(is_array($value)){
+				$resultSet[] = $value['prop'];
+			} else{
+				$resultSet[] = $value;
+			}
+		}
+
+		print_arr($resultSet);
+		//return $propSet;
+
+	}
+
+	private function getPropsForCat($id){
+
+		$propSet = $this->orm->select("SELECT `prop` 
+										FROM `prefix_props_in_cats`
+											WHERE `id_cat` = ?", array($id));
+
+		return $propSet;
+
+	}
+
+	private function getProps($id){
+
+		if(array_key_exists('id_cats', $id)) {
+			$idCat = $id['id_cats'];
+		} elseif (array_key_exists('id_parent', $id)){
+			$idCat = $id['id_parent'];
+		} else {
+			$idCat = null;
+		}
+
+		if($idCat){
+			$res = $this->getPropsForCat($idCat);
+
+			$idCat = $this->orm->select("SELECT `id_parent` 
+										FROM `prefix_category`
+											WHERE `id` = ?", array($idCat));
+			$resultSet = array_merge($res, $this->getProps($idCat));
+		} else {
+			return array();
+		}
+
+		return $resultSet;
 
 	}
 
