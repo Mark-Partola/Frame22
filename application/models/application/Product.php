@@ -47,28 +47,28 @@ class Product extends \Models\Model_abstractDb{
 											WHERE `id_article` = ?", array($id));
 
 		$result = $this->getProps($idCat);
+		//print_arr($result);
 
 		$resultSet = array();
 
-		foreach ($result as $key=>$value) {
+		foreach ($result as $value) {
 			if(is_array($value)){
-				$resultSet[] = $value['prop'];
+				$resultSet[] = $value[key($value)];
 			} else{
 				$resultSet[] = $value;
 			}
 		}
 
-		print_arr($resultSet);
-		//return $propSet;
+		//print_arr($resultSet);
+		return $resultSet;
 
 	}
 
 	private function getPropsForCat($id){
-
-		$propSet = $this->orm->select("SELECT `prop` 
+		$uniqid = uniqid();
+		$propSet = $this->orm->select("SELECT `prop` as `{$uniqid}`
 										FROM `prefix_props_in_cats`
 											WHERE `id_cat` = ?", array($id));
-
 		return $propSet;
 
 	}
@@ -89,6 +89,7 @@ class Product extends \Models\Model_abstractDb{
 			$idCat = $this->orm->select("SELECT `id_parent` 
 										FROM `prefix_category`
 											WHERE `id` = ?", array($idCat));
+
 			$resultSet = array_merge($res, $this->getProps($idCat));
 		} else {
 			return array();

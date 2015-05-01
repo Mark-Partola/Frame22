@@ -1,0 +1,46 @@
+<article class="module width_full">
+	<header><h3>Элементы</h3></header>
+	<div class="j-elems-container">
+		<table class="tablesorter" cellspacing="0" id="j-elems-table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>Заголовок</th>
+					<th>Автор</th>
+					<th>Контент</th>
+					<th>Статус</th>
+					<th>Дата создания</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for elem in elems %}
+					<tr data-id="{{elem.id}}">
+						<td><input type="checkbox" value="{{user.id}}"></td>
+						<td>{{elem.id}}</td>
+						<td class="j-elem-title">{{elem.title}}</td>
+						<td>{{elem.author}}</td>
+						<td style="width: 50%;" class="j-elem-content">
+							<div id="over" style="height: 7em;overflow-y: scroll;line-height: 1em;font-size: 14px;">{{elem.content}}</div>
+							{#{ elem.content|length > 500 ? elem.content|slice(0, 500) : elem.content}#}
+						</td>
+
+						{% if elem.status == 1 %}
+							<td><input type="checkbox" checked="checked" name="{{login}}" value="{{elem.status}}"></td>
+						{% else %}
+							<td><input type="checkbox" name="{{login}}" value="{{elem.status}}"></td>
+						{% endif %}
+
+						<td>{{elem.create_at}}</td>
+
+						<td>
+							<a href="#callback" class="button j-edit-elem fancybox"  data-id="{{elem.id}}" style="background: url({{dir}}/imgs/admin/icn_edit.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
+							<a href="#callback" class="button fancybox" style="background: url({{dir}}/imgs/admin/icn_trash.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</article>

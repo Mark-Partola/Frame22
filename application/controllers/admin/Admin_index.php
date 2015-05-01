@@ -53,6 +53,11 @@ class Admin_index extends \Controllers\Ctrl_base{
 		$model = new \Models\Content\Category();
 		return $model->getAllProps();
 	}
+	/*Элементы*/
+	private function getAllElems(){
+		$model = new \Models\Content\Category();
+		return $model->getAllElems();
+	}
 
 
 	/*конец контента*/
@@ -106,6 +111,9 @@ class Admin_index extends \Controllers\Ctrl_base{
 		}
 		elseif($content == 'elems'){
 			$args['elems'] = $this->getElemsByCats();
+		}
+		elseif($content == 'allElems'){
+			$args['elems'] = $this->getAllElems();
 		}
 
 		echo $template->render($args);

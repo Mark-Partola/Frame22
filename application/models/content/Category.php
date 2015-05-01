@@ -24,5 +24,15 @@ class Category extends \Models\Model_abstractDb{
 
 	}
 
+	public function getAllElems(){
+
+		$sql = "SELECT * FROM `prefix_article`";
+
+		$stmt = $this->db->query($sql);
+
+		return $stmt->fetchAll();
+
+	}
+
 
 }
