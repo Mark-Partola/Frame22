@@ -45,7 +45,7 @@ class Application {
 		//RequestLogger::log('Request',($_SERVER['REQUEST_METHOD']), $path);
 
 		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found"); 
-		header('Location:'.ROUTE_ROOT.'/errors?status=404');
+		//header('Location:'.ROUTE_ROOT.'/errors?status=404');
 	}
 
 	public static function run() {

@@ -1,0 +1,86 @@
+.filter-text{
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+	color: #444;
+	margin-bottom: 10px;
+	border: 0;
+	background-color: #fff;
+	box-shadow: 0px 0px 3px #83baf7;
+}
+
+.left-menu{
+	ul{
+		list-style: none;
+		padding-left: 10px;
+		li{
+			margin-bottom: 10px;
+			margin-top: 10px;
+
+			a{
+				display: block;
+				cursor: pointer;
+				background-color: #f0f0f0;
+				padding: 10px;
+				width: 100%;
+
+
+			}
+		}
+		ul{
+			li{
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
+
+			a{
+				background-color: #f6f6f6;
+			}
+
+			//display: none;
+		}
+	}
+}
+
+.items-pagination{
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+	background-color: #444;
+	border: 1px solid #333;
+	padding: 10px;
+	margin: 0 15px 20px;
+}
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+#owl-demo{
+	padding: 20px 0;
+}
+.owl-pagination{
+	height: 3em;
+}
+
+.owl-prev, .owl-next{
+	position: absolute;
+	top:60%;
+	right: 0;
+	padding: 29px;
+	background-image: url(http://www.clipartbest.com/cliparts/zxi/gk6/zxigk6pcA.png);
+	background-repeat: no-repeat;
+	background-size: 60px;
+	background-color: rgba(0,0,0,0.3);
+	border-radius: 50px;
+	color: #fff;
+	width: 50px;
+}
+.owl-next{
+	transform: rotate(180deg);
+	left: 0;
+}
+.owl-prev:hover, .owl-next:hover{
+	background-color: rgba(0,0,0,0.5);
+}

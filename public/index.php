@@ -5,6 +5,13 @@ require_once __DIR__.'/../application/Application.php';
 
 Application::init();
 
+/***APPLICATION***/
+
+Request('GET', '/products','Application\ProductsController:getAllProducts');
+Request('GET', '/products/{id}','Application\ProductsController:getProductById');
+
+/***END APPLICATION***/
+
 //админ
 Request('GET', '/admin','Admin\Admin_index');
 Request('GET', '/admin/{content}','Admin\Admin_index:getContent'); //assert

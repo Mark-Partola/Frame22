@@ -26,7 +26,7 @@ abstract class Ctrl_base {
 		}
 
 		ob_start();
-			include 'tpl/'.$tplname.'.php';
+			include 'tpl/'.$tplname;
 		return ob_get_clean();
 
 	}

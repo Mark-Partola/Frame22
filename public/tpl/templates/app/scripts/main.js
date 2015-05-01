@@ -7,8 +7,22 @@ requirejs.config({
 	}
 });
 
-requirejs(['views/test'], function(View){
+requirejs([
 
-	new View;
+	'views/productsView',
+	'views/productsCollectionView',
+	'collections/products',
+
+], function(View, ProductsCollectionView, Collection){
+
+	var col = new Collection;
+
+	col.fetch({success: function(){
+		$('.edit').html(
+			new ProductsCollectionView({
+				collection: col
+			}).render().el
+		);
+	}});
 
 });

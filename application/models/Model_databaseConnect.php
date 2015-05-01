@@ -20,7 +20,8 @@ class Model_databaseConnect{
 				self::$instance->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
 				//Logger::all('тестовый лог3', __FILE__, __LINE__);
 			} catch (\PDOException $e) {
-				Application::triggerError();
+				echo $e;
+				\Application::triggerError();
 			}
 
 		}
