@@ -8,7 +8,11 @@ Application::init();
 /***APPLICATION***/
 
 Request('GET', '/products','Application\ProductsController:getAllProducts');
-Request('GET', '/products/all','Application\ProductsController:getAllPropsForElem'); //test
+//Получить свойства
+Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsForElem');
+//Сохранить свойства
+Request('POST', '/elems/props/{id}','Application\ProductsController:savePropsForElem');
+//Конкретный продукт
 Request('GET', '/products/{id}','Application\ProductsController:getProductById');
 
 /***END APPLICATION***/

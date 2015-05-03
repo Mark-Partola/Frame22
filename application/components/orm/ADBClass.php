@@ -4,7 +4,7 @@ namespace Components\Orm;
 
 abstract class ADBClass{
 
-	public function select($sql, $params=null){
+	private function prepare($sql, $params=null){
 
 		try {
 			if(is_null($params)) {
@@ -22,16 +22,40 @@ abstract class ADBClass{
 				}
 
 				$stmt->execute();
+
+				return $stmt;
 			}
 
-			$res = $stmt->fetchAll();
-			if(count($res) === 1) $res = $res[0];
-
 		} catch(\PDOException $e) {
-			$res = false;
+			return false;
 		}
+	}
+
+	public function delete($sql, $params=null){
+
+		$stmt = $this->prepare($sql, $params);
+
+		return $this->pdo->errorCode();
+
+	}
+
+	public function insert($sql, $params=null){
+
+		$stmt = $this->prepare($sql, $params);
+
+		return $this->pdo->lastInsertId();
+
+	}
+
+	public function select($sql, $params=null){
+
+		$stmt = $this->prepare($sql, $params);
+
+		$res = $stmt->fetchAll();
+		if(count($res) === 1) $res = $res[0];
 
 		return $res;
+
 	}
 
 }

@@ -84,7 +84,7 @@ function loadElems(options){
 		var offsetUser = offset;
 		var url;
 		if(options.offset){
-			url = $('.j-dir').html()+'/admin/'+options.url+'?usersOffset='+offsetUser;
+			url = $('.j-dir').html()+'/admin/'+options.url+'?offset='+offsetUser;
 		}else{
 			url = $('.j-dir').html()+'/admin/'+options.url;
 		}

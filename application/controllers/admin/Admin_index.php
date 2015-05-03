@@ -10,8 +10,8 @@ class Admin_index extends \Controllers\Ctrl_base{
 	private function getAllUsers(){
 		$offset = 0;
 		$limit = 5;
-		if(isset($_GET['usersOffset']))
-			$offset = $_GET['usersOffset'];
+		if(isset($_GET['offset']))
+			$offset = $_GET['offset'];
 
 		$model = new \Models\User\Users();
 		$allUsers = $model->getAllUsers($offset, $limit);
@@ -55,8 +55,19 @@ class Admin_index extends \Controllers\Ctrl_base{
 	}
 	/*Элементы*/
 	private function getAllElems(){
+
+		$offset = 0;
+		$limit = 5;
+		if(isset($_GET['offset']))
+			$offset = $_GET['offset'];
+
 		$model = new \Models\Content\Category();
-		return $model->getAllElems();
+		return $model->getAllElems($offset, $limit);
+		return $allUsers;
+	}
+	private function countAllElems(){
+		$model = new \Models\Content\Category();
+		return $model->countAllElems();
 	}
 
 
@@ -114,6 +125,7 @@ class Admin_index extends \Controllers\Ctrl_base{
 		}
 		elseif($content == 'allElems'){
 			$args['elems'] = $this->getAllElems();
+			$args['count'] = $this->countAllElems();
 		}
 
 		echo $template->render($args);

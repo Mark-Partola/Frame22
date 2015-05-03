@@ -20,20 +20,24 @@ class Product extends \Models\Model_abstractDb{
 			$id = $id['id'];
 		}
 
-		$preRes = $this->orm->select("SELECT `a`.`title`, `a`.`content`, `p`.`prop_title`, `v`.`value`
+		$preRes = $this->orm->select("SELECT `a`.`title`, `a`.`content`, `p`.`prop_title`, `p`.`value`
 					FROM `prefix_article` as `a`
 						INNER JOIN `prefix_props` as `p`
 							ON `a`.`id` = `p`.`id_elem`
-						INNER JOIN `prefix_props_value` as `v`
-							ON `p`.`id` = `v`.`id_props`
 					WHERE `p`.`id_elem` = ?", array($id));
 
 		$res = array();
 
-		foreach($preRes as $key=>$val){
-			$res['title'] = $val['title'];
-			$res['content'] = $val['content'];
-			$res['props'][$val['prop_title']] = $val['value'];
+		if(!key_exists('title', $preRes)) {
+			foreach($preRes as $key=>$val){
+				$res['title'] = $val['title'];
+				$res['content'] = $val['content'];
+				$res['props'][$val['prop_title']] = $val['value'];
+			}
+		} else {
+			$res['title'] = $preRes['title'];
+			$res['content'] = $preRes['content'];
+			$res['props'][$preRes['prop_title']] = $preRes['value'];
 		}
 
 		return $res;
@@ -96,6 +100,32 @@ class Product extends \Models\Model_abstractDb{
 		}
 
 		return $resultSet;
+
+	}
+
+	/**
+	* Сохранение свойств с проверкой на существующие
+	*/
+	public function savePropsForElem($id, $props){
+
+		// сначала удалим все имеющиеся свойства
+
+		$sql = "DELETE FROM `prefix_props` WHERE `id_elem` = ?";
+
+		$res = $this->orm->delete($sql, array($id));
+
+		if($res !== '00000') {
+			return false;
+		}
+
+		//добавляем новые свойства
+
+		$sql = "INSERT INTO `prefix_props`(`prop_title`,`value`, `id_elem`)
+					VALUES(?, ?, ?)";
+
+		foreach($props as $key => $value) {
+			$this->orm->insert($sql, array($key, $value ,$id));
+		}
 
 	}
 

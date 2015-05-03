@@ -14,16 +14,22 @@ class ProductsController extends \Controllers\Ctrl_base{
 
 	public function getProductById($id){
 
-		header('Content-Type: text/json');
+		header('Content-Type: application/json');
 		$model = new \Models\Application\Product;
-		print_arr($model->getProductById($id));
-		//echo json_encode($model->getProductById($id));
+		//print_arr($model->getProductById($id));
+		echo json_encode($model->getProductById($id));
 
 	}
 
-	public function getAllPropsForElem(){
+	public function getAllPropsForElem($id){
 		$model = new \Models\Application\Product;
-		print_arr($model->getAllPropsForElem(4));
+		echo json_encode($model->getAllPropsForElem($id));
+	}
+
+	public function savePropsForElem($id){
+		$model = new \Models\Application\Product;
+		$model->savePropsForElem($id, $_POST);
+		echo json_encode(["title" => 'Хорошо', "status"=>'1']);
 	}
 
 }

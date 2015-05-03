@@ -24,13 +24,28 @@ class Category extends \Models\Model_abstractDb{
 
 	}
 
-	public function getAllElems(){
+	public function getAllElems($offset, $limit){
 
-		$sql = "SELECT * FROM `prefix_article`";
+		if($offset == 1 || $offset == 0){
+			$offset = 0;
+		}else
+			$offset = ($offset-1)*$limit;
+
+		$sql = "SELECT * FROM `prefix_article` LIMIT ?, ?";
+
+		return $this->orm->select($sql, array($offset, $limit));
+
+	}
+
+	public function countAllElems(){
+
+		$sql = "SELECT count(`id`) as `q` FROM `prefix_article`";
 
 		$stmt = $this->db->query($sql);
 
-		return $stmt->fetchAll();
+		$res = $stmt->fetch();
+
+		return ceil($res['q'] / 5);
 
 	}
 
