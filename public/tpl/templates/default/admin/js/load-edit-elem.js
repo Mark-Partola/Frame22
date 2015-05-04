@@ -10,7 +10,7 @@
 				//var content = $('.j-elems-container').find('tr').has('[data-id='+$(e.target).data('id')+']').find('.j-elem-content div').text();
 				var title = $(this).parents('tr').find('.j-elem-title').text();
 				var content = $(this).parents('tr').find('.j-elem-content div').text();
-				var id = $(e.target).data('id');
+				var id = $(this).data('id');
 
 				$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/editElem.php',
 				{

@@ -1,4 +1,41 @@
-/****/
+.galery-container{
+	margin-top: 50px;
+	margin-left: 50px;
+}
+.container{
+	width: 45%;
+	height: 200px;
+	display: inline-block;
+	margin-bottom: 30px;
+	position: relative;
+}
+.container img{
+	box-shadow: 0 0 10px 1px #777;
+	width: 90%;
+	height: 100%;
+}
+.container label{
+	cursor: pointer;
+	height: 100%;
+}
+.container input{
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	width: 20%;
+	height: 20%;
+}
+@font-face {
+  font-family: "RobotoRegular";
+  src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+  src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"), url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+table#j-elems-table{
+	font-family: "RobotoRegular";
+	font-size: 14px;
+}
 .j-del-prop{
 	background: url(/frame-22-22/public/imgs/admin/icn_trash.png);
 	display: inline-block;

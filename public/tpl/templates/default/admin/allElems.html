@@ -18,12 +18,12 @@
 			<tbody>
 				{% for elem in elems %}
 					<tr data-id="{{elem.id}}">
-						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox" style="margin-left: 20px; font-size: 25px;"><i class="fa fa-picture-o"></i></a></td>
+						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox j-elem-pict" style="margin-left: 20px; font-size: 25px;"><i class="fa fa-picture-o"></i></a></td>
 						<td>{{elem.id}}</td>
 						<td class="j-elem-title">{{elem.title}}</td>
 						<td>{{elem.author}}</td>
 						<td style="width: 50%;" class="j-elem-content">
-							<div id="over" style="height: 7em;overflow-y: scroll;line-height: 1em;font-size: 14px;">{{elem.content}}</div>
+							<div id="over" style="height: 7em;overflow-y: scroll;font-size: 14px;line-height: 1.5em">{{elem.content}}</div>
 							{#{ elem.content|length > 500 ? elem.content|slice(0, 500) : elem.content}#}
 						</td>
 
@@ -35,10 +35,11 @@
 
 						<td>{{elem.create_at}}</td>
 
-						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox j-props-elem">Свойства</a></td>
+						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox j-props-elem button" style="font-size: 15px; color: #fff; text-align:center;">Свойства</a></td>
 
 						<td>
-							<a href="#callback" class="j-edit-elem fancybox"  data-id="{{elem.id}}"><i class="fa fa-picture-o"></i></a>
+							<a href="#callback" class="j-edit-elem fancybox"  data-id="{{elem.id}}" style="font-size: 25px; margin-right: 10px;"><i class="fa fa-pencil"></i></a>
+							<a href="#callback" class="j-edit-elem fancybox"  data-id="{{elem.id}}" style="font-size: 25px;"><i class="fa fa-trash"></i></a>
 							<!--a href="#callback" class="button fancybox" style="background: url({{dir}}/imgs/admin/icn_trash.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a-->
 						</td>
 					</tr>
@@ -100,6 +101,19 @@
 			//}
 
 			e.preventDefault();
+		});
+	});
+</script>
+
+<script>
+	$('.j-elem-pict').on('click', function(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+
+		$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/pictElem.php',{id: id})
+		.done(function( data ) {
+			$('#callback').html('');
+			$('#callback').html(data);
 		});
 	});
 </script>
