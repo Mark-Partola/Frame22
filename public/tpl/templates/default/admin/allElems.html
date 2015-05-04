@@ -18,7 +18,7 @@
 			<tbody>
 				{% for elem in elems %}
 					<tr data-id="{{elem.id}}">
-						<td><input type="checkbox" value="{{user.id}}"></td>
+						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox" style="margin-left: 20px; font-size: 25px;"><i class="fa fa-picture-o"></i></a></td>
 						<td>{{elem.id}}</td>
 						<td class="j-elem-title">{{elem.title}}</td>
 						<td>{{elem.author}}</td>
@@ -38,8 +38,8 @@
 						<td><a href="#callback" data-id="{{elem.id}}" class="fancybox j-props-elem">Свойства</a></td>
 
 						<td>
-							<a href="#callback" class="button j-edit-elem fancybox"  data-id="{{elem.id}}" style="background: url({{dir}}/imgs/admin/icn_edit.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
-							<a href="#callback" class="button fancybox" style="background: url({{dir}}/imgs/admin/icn_trash.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a>
+							<a href="#callback" class="j-edit-elem fancybox"  data-id="{{elem.id}}"><i class="fa fa-picture-o"></i></a>
+							<!--a href="#callback" class="button fancybox" style="background: url({{dir}}/imgs/admin/icn_trash.png); display: inline-block; background-repeat: no-repeat; height:1em;"></a-->
 						</td>
 					</tr>
 				{% endfor %}
@@ -85,18 +85,19 @@
 <!-- Подгрузка в фэнсибокс -->
 <script>
 	$(function(){
-		$('.j-elems-container').on('click', function(e){
-			if($(e.target).is($('.j-props-elem'))){
+		$('.j-elems-container').on('click', '.j-props-elem', function(e){
+			//if($(e.target).is($('.j-props-elem'))){
 
 				//var title = $('.j-elems-container').find('tr').has('[data-id='+$(e.target).data('id')+']').find('.j-elem-title').text();
 				//var content = $('.j-elems-container').find('tr').has('[data-id='+$(e.target).data('id')+']').find('.j-elem-content div').text();
 				var id = $(e.target).data('id');
 				$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/propsElem.php',{id: id})
 				.done(function( data ) {
+					$('#callback').html('');
 					$('#callback').html(data);
 				});
 
-			}
+			//}
 
 			e.preventDefault();
 		});
