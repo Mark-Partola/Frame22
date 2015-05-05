@@ -134,7 +134,12 @@ class Product extends \Models\Model_abstractDb{
 	*/
 	public function saveMainImage($id, $src){
 
-		//$sql = "INSERT INTO"
+		$sql = "UPDATE `prefix_article` SET `main_image` = ?
+					WHERE `id` = ?";
+
+		$res = $this->orm->update($sql, array($src, $id));
+
+		echo $res;
 
 	}
 

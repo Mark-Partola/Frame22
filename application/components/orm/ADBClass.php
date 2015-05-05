@@ -47,6 +47,14 @@ abstract class ADBClass{
 
 	}
 
+	public function update($sql, $params=null){
+
+		$stmt = $this->prepare($sql, $params);
+
+		return $this->pdo->errorCode();
+
+	}
+
 	public function select($sql, $params=null){
 
 		$stmt = $this->prepare($sql, $params);
