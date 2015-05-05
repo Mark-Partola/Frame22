@@ -38,4 +38,10 @@ class ProductsController extends \Controllers\Ctrl_base{
 		//echo json_encode(["title" => 'Хорошо', "status"=>'1']);
 	}
 
+	public function changeStatus($id){
+		$model = new \Models\Application\Product;
+		$model->changeStatus($id, $_POST['status']);
+		//echo json_encode(["title" => 'Хорошо', "status"=>'1']);
+	}
+
 }

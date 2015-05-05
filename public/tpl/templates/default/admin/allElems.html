@@ -123,15 +123,13 @@
 
 	$('.j-elem-status').on('click', function() {
 
-		var res = {
-			status: $(this).prop("checked"),
-			id: $(this).parents('tr').data('id');
-		}
+		var status = $(this).prop("checked") ? 1 : 0;
+		var id = $(this).parents('tr').data('id');
 
-		/*$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/pictElem.php',{id: id})
+		$.post( $('.j-dir').html()+'/elems/'+id+'/status',{status: status})
 		.done(function( data ) {
 			console.log(data);
-		});*/
+		});
 
 	});
 </script>

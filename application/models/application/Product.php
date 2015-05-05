@@ -143,5 +143,19 @@ class Product extends \Models\Model_abstractDb{
 
 	}
 
+	/**
+	* Изменение статуса элемента
+	*/
+	public function changeStatus($id, $status){
+
+		$sql = "UPDATE `prefix_article` SET `status` = ?
+					WHERE `id` = ?";
+
+		$res = $this->orm->update($sql, array($status, $id));
+
+		echo $res;
+
+	}
+
 
 }

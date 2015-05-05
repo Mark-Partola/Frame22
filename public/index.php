@@ -14,6 +14,8 @@ Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsFo
 Request('POST', '/elems/props/{id}','Application\ProductsController:savePropsForElem');
 //Установить главную картинку
 Request('POST', '/elems/{id}/image/','Application\ProductsController:saveMainImage');
+//Изменение статуса элемента
+Request('POST', '/elems/{id}/status/','Application\ProductsController:changeStatus');
 //Конкретный продукт
 Request('GET', '/products/{id}','Application\ProductsController:getProductById');
 
