@@ -28,9 +28,9 @@
 						</td>
 
 						{% if elem.status == 1 %}
-							<td><input type="checkbox" checked="checked" name="{{login}}" value="{{elem.status}}"></td>
+							<td><input type="checkbox" checked="checked" class="j-elem-status"></td>
 						{% else %}
-							<td><input type="checkbox" name="{{login}}" value="{{elem.status}}"></td>
+							<td><input type="checkbox" class="j-elem-status"></td>
 						{% endif %}
 
 						<td>{{elem.create_at}}</td>
@@ -115,6 +115,24 @@
 			$('#callback').html('');
 			$('#callback').html(data);
 		});
+	});
+</script>
+
+<script>
+	//изменение активности элемента
+
+	$('.j-elem-status').on('click', function() {
+
+		var res = {
+			status: $(this).prop("checked"),
+			id: $(this).parents('tr').data('id');
+		}
+
+		/*$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/pictElem.php',{id: id})
+		.done(function( data ) {
+			console.log(data);
+		});*/
+
 	});
 </script>
 
