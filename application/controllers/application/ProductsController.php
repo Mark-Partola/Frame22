@@ -32,4 +32,10 @@ class ProductsController extends \Controllers\Ctrl_base{
 		echo json_encode(["title" => 'Хорошо', "status"=>'1']);
 	}
 
+	public function saveMainImage($id){
+		$model = new \Models\Application\Product;
+		$model->saveMainImage($id, $_POST['src']);
+		//echo json_encode(["title" => 'Хорошо', "status"=>'1']);
+	}
+
 }

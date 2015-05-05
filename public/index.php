@@ -12,6 +12,8 @@ Request('GET', '/products','Application\ProductsController:getAllProducts');
 Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsForElem');
 //Сохранить свойства
 Request('POST', '/elems/props/{id}','Application\ProductsController:savePropsForElem');
+//Установить главную картинку
+Request('POST', '/elems/{id}/image/','Application\ProductsController:saveMainImage');
 //Конкретный продукт
 Request('GET', '/products/{id}','Application\ProductsController:getProductById');
 
@@ -36,6 +38,15 @@ Request('GET', '/','Ctrl_index');
 Request('GET', '/auth/login','User\Auth'); //показать страницу
 Request('POST', '/auth/login','User\Auth:login'); //проверка логина/пароля
 Request('GET', '/auth/logout','User\Auth:logout'); //проверка логина/пароля
+
+
+
+
+
+Request('GET', '/uploads/images/','System\UploadsController:getAllImages');
+
+
+
 
 Application::run();
 

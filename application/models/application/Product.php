@@ -129,5 +129,14 @@ class Product extends \Models\Model_abstractDb{
 
 	}
 
+	/**
+	* Установка главного изабражения элемента
+	*/
+	public function saveMainImage($id, $src){
+
+		//$sql = "INSERT INTO"
+
+	}
+
 
 }
