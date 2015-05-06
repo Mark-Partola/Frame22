@@ -7,6 +7,9 @@ Application::init();
 
 /***APPLICATION***/
 
+Request('GET', '/','Ctrl_index');
+Request('GET', '/cats','Ctrl_index:getCats');
+
 Request('GET', '/products','Application\ProductsController:getAllProducts');
 //Получить свойства
 Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsForElem');
@@ -32,7 +35,6 @@ Request('POST', '/admin/action/create','Admin\Admin_index:createAction');
 //Обновить элемент
 Request('POST', '/admin/content/update/{id}','Admin\Admin_index:updateElem'); //assert
 
-Request('GET', '/','Ctrl_index');
 
 /*
 * Авторизация

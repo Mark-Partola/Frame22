@@ -21,7 +21,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="shortcut icon" href="{{dir}}/tpl/templates/app/img/favicon.png" />
+	<link rel="shortcut icon" href="favicon.png" />
 
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/libs/bootstrap/bootstrap-grid-3.3.1.min.css" />
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/libs/font-awesome-4.2.0/css/font-awesome.min.css" />
@@ -31,18 +31,9 @@
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/fonts.css" />
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/main.css" />
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/media.css" />
-	<style>
-	     #map{
-	     	display: none;
-	     	width: 1000px;
-	     	height: 1000px;
-	     }
-	   </style>
-
 </head>
 <body>
-	<div id="callback" style="display:none;"></div>
-	<div id="map"></div>
+
 	<header class="page-header">
 		<div class="page-header_top-line">
 			<div class="container">
@@ -50,7 +41,7 @@
 					<div class="col-md-5">
 						<div class="page-header_info">
 							<strong>Москва</strong>
-							<a href="#map" class="fancybox" id="shake">
+							<a href="#map" class="fancybox">
 								ул. Верейская, 29, стр. 35
 							</a>
 						</div>
@@ -58,7 +49,7 @@
 					<div class="col-md-2">
 						<div class="page-header_logo">
 							<a href="" class="page-header_logo">
-								<img src="{{dir}}/tpl/templates/app/img/logo.png" alt="">
+								<img src="img/logo.png" alt="">
 							</a>
 						</div>
 					</div>
@@ -357,7 +348,7 @@
 					<h2>Все виды работ по ремонту авто</h2>
 				</div>
 				<div class="col-md-3">
-					<a href="#callback" class="button fancybox">Оставить заявку</a>
+					<a href="#collback" class="button fancybox">Оставить заявку</a>
 				</div>
 			</div>
 			<div class="row">
@@ -408,24 +399,21 @@
 	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
 	<script src="libs/respond/respond.min.js"></script>
 	<![endif]-->
-	<script src="{{dir}}/tpl/templates/app/libs/jquery/jquery-1.11.1.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/fancybox/jquery.fancybox.pack.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/waypoints/waypoints-1.6.2.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/scrollto/jquery.scrollTo.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/owl-carousel/owl.carousel.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.plugin.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.countdown.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.countdown-ru.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/landing-nav/navigation.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/bootstrap-toolkit/bootstrap-toolkit.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/maskedinput/jquery.maskedinput.min.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/equalheight/jquery.equalheight.js"></script>
-	<script src="{{dir}}/tpl/templates/app/libs/stellar/jquery.stellar.min.js"></script>
-
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
-	<script src="{{dir}}/tpl/templates/app/js/common.js"></script>
+	<script src="libs/jquery/jquery-1.11.1.min.js"></script>
+	<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+	<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
+	<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
+	<script src="libs/owl-carousel/owl.carousel.min.js"></script>
+	<script src="libs/countdown/jquery.plugin.js"></script>
+	<script src="libs/countdown/jquery.countdown.min.js"></script>
+	<script src="libs/countdown/jquery.countdown-ru.js"></script>
+	<script src="libs/landing-nav/navigation.js"></script>
+	<script src="libs/bootstrap-toolkit/bootstrap-toolkit.min.js"></script>
+	<script src="libs/maskedinput/jquery.maskedinput.min.js"></script>
+	<script src="libs/equalheight/jquery.equalheight.js"></script>
+	<script src="libs/stellar/jquery.stellar.min.js"></script>
+	<script src="js/common.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
 </body>

@@ -7,7 +7,25 @@ class Ctrl_index extends Ctrl_base{
 
 	public function index(){
 
-		echo $this->generateTemplate('templates/app/index.html');
+		$template = $this->twig->loadTemplate('app/index.html');
+
+		$args = array(
+			'dir' => ROUTE_ROOT
+		);
+
+		echo $template->render($args);
+
+	}
+
+	public function getCats(){
+
+		$template = $this->twig->loadTemplate('app/cats.html');
+
+		$args = array(
+			'dir' => ROUTE_ROOT
+		);
+
+		echo $template->render($args);
 
 	}
 }

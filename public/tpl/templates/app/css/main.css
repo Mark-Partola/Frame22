@@ -1,0 +1,611 @@
+@charset "UTF-8";
+/* line 1, ../sass/main.scss */
+*::-webkit-input-placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* line 5, ../sass/main.scss */
+*:-moz-placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* line 9, ../sass/main.scss */
+*::-moz-placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* line 13, ../sass/main.scss */
+*:-ms-input-placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* line 26, ../sass/main.scss */
+body {
+  font-family: "RobotoRegular", sans-serif;
+  font-size: 16px;
+  min-width: 320px;
+  position: relative;
+}
+/* line 32, ../sass/main.scss */
+body p {
+  line-height: 1.7em;
+}
+
+/* line 36, ../sass/main.scss */
+.hidden {
+  display: none;
+}
+
+/* line 39, ../sass/main.scss */
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+/* line 43, ../sass/main.scss */
+.parallax {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  position: relative;
+}
+
+/* line 48, ../sass/main.scss */
+.button {
+  display: inline-block;
+  background-color: #d12f22;
+  height: 50px;
+  vertical-align: middle;
+  line-height: 50px;
+  padding: 0 25px;
+  font-size: 20px;
+  border-bottom: #ac160a 4px solid;
+  color: #fff;
+  font-family: "BebasBold";
+}
+/* line 60, ../sass/main.scss */
+.button:hover {
+  background-color: #e64437;
+}
+/* line 63, ../sass/main.scss */
+.button:active {
+  background-color: #b81609;
+}
+
+/****HEADER****/
+/* line 70, ../sass/main.scss */
+.page-header {
+  background-image: url(../img/top_bg.jpg);
+  min-height: 643px;
+  background-repeat: repeat-x;
+  background-position: top center;
+  position: relative;
+  font-family: "BebasBold";
+}
+/* line 78, ../sass/main.scss */
+.page-header a {
+  color: #fff;
+}
+/* line 82, ../sass/main.scss */
+.page-header .button {
+  margin-right: 20px;
+}
+/* line 85, ../sass/main.scss */
+.page-header .st_button {
+  line-height: 18px;
+  padding-left: 63px;
+  padding-top: 7px;
+  text-align: left;
+  background-image: url(../img/camera.png);
+  background-repeat: no-repeat;
+  background-position: 8px 8px;
+}
+
+/* line 95, ../sass/main.scss */
+.inner-header {
+  min-height: 225px !important;
+}
+
+/* line 98, ../sass/main.scss */
+.page-header_top-line {
+  min-height: 97px;
+  padding: 22px 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px;
+  width: 100%;
+}
+/* line 107, ../sass/main.scss */
+.page-header_top-line a {
+  font-size: 21px;
+  border-bottom: #fff dashed 1px;
+  transition: all .25s;
+}
+/* line 112, ../sass/main.scss */
+.page-header_top-line a:hover {
+  border-bottom: transparent 1px dashed;
+}
+
+/* line 117, ../sass/main.scss */
+.page-header_info {
+  padding-left: 50px;
+  background-image: url(../img/top_map.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  line-height: 26px;
+}
+/* line 124, ../sass/main.scss */
+.page-header_info strong {
+  display: block;
+  color: #d12f22;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 32px;
+}
+
+/* line 133, ../sass/main.scss */
+.page-header_info--right {
+  background-image: none;
+  padding-left: 0;
+  text-align: right;
+}
+/* line 138, ../sass/main.scss */
+.page-header_info--right span {
+  color: #fff;
+}
+
+/* line 143, ../sass/main.scss */
+.page-header_logo-wrap {
+  position: relative;
+  width: 240px;
+  margin: 0 auto;
+}
+
+/* line 148, ../sass/main.scss */
+.page-header_logo {
+  border-bottom: none !important;
+  position: absolute;
+  margin-top: -5px;
+}
+
+/* line 154, ../sass/main.scss */
+.page-header-slogan {
+  color: #fff;
+  text-align: center;
+  margin-top: 65px;
+  font-size: 40px;
+  text-shadow: rgba(0, 0, 0, 0.55) 0 3px;
+  font-family: "BebasRegular";
+}
+
+/* line 163, ../sass/main.scss */
+.page-header_wrapper-buttons-top {
+  position: absolute;
+  bottom: 32px;
+  width: 100%;
+}
+
+/***MENU***/
+/* line 171, ../sass/main.scss */
+.top-menu {
+  height: 62px;
+  background-color: #242424;
+  box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px;
+  font-family: "BebasRegular";
+  text-transform: uppercase;
+}
+/* line 178, ../sass/main.scss */
+.top-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+/* line 184, ../sass/main.scss */
+.top-menu li {
+  float: left;
+}
+/* line 187, ../sass/main.scss */
+.top-menu li.active, .top-menu li:hover {
+  background-color: #050505;
+}
+/* line 191, ../sass/main.scss */
+.top-menu li:nth-child(2) a {
+  background-position: 10px -70px;
+}
+/* line 194, ../sass/main.scss */
+.top-menu li:nth-child(3) a {
+  background-position: 10px -165px;
+}
+/* line 197, ../sass/main.scss */
+.top-menu li:nth-child(4) a {
+  background-position: 10px -270px;
+}
+/* line 200, ../sass/main.scss */
+.top-menu li:nth-child(5) a {
+  background-position: 10px -385px;
+}
+/* line 203, ../sass/main.scss */
+.top-menu li:nth-child(6) a {
+  background-position: 10px -495px;
+}
+/* line 208, ../sass/main.scss */
+.top-menu a {
+  color: #fff;
+  font-size: 20px;
+  padding: 0 26px 0 50px;
+  display: block;
+  height: 62px;
+  line-height: 62px;
+  border-left: 1px solid #3b3b3b;
+  background-image: url(../img/menu.png);
+  background-repeat: no-repeat;
+  background-position: 10px 17px;
+}
+/* line 221, ../sass/main.scss */
+.top-menu .garanty {
+  float: right;
+  color: #fff;
+  cursor: default;
+  font-size: 15px;
+  border: 3px solid #fff;
+  border-radius: 3px;
+  padding: 3px 5px;
+  line-height: 16px;
+  margin-top: 10px;
+}
+/* line 232, ../sass/main.scss */
+.top-menu .garanty_right,
+.top-menu .garanty_left {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 237, ../sass/main.scss */
+.top-menu .garanty_right {
+  font-family: "RobotoCondensedRegular";
+}
+/* line 240, ../sass/main.scss */
+.top-menu .garanty_left {
+  font-family: "BebasBold";
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+/* line 246, ../sass/main.scss */
+.top-menu .garanty_left span {
+  font-size: 34px;
+  font-family: "BebasBold";
+}
+
+/***╨б╨Х╨Ъ╨ж╨Ш╨п ╨Ъ╨Р╨в╨Х╨У╨Ю╨а╨Ш╨п***/
+/* line 255, ../sass/main.scss */
+.main-cats {
+  background-color: #191919;
+  padding: 40px 0 32px;
+}
+/* line 259, ../sass/main.scss */
+.main-cats .main-cats_btn {
+  text-align: center;
+  margin-top: 30px;
+}
+/* line 264, ../sass/main.scss */
+.main-cats h2 {
+  text-transform: uppercase;
+  color: #c9c9c9;
+  font-family: "BebasRegular";
+  font-size: 40px;
+  text-align: center;
+}
+/* line 271, ../sass/main.scss */
+.main-cats h2 strong {
+  color: #fff;
+}
+/* line 275, ../sass/main.scss */
+.main-cats h2 span {
+  color: #d12f22;
+}
+
+/* line 281, ../sass/main.scss */
+section h2,
+article h2 {
+  position: relative;
+}
+
+/* line 286, ../sass/main.scss */
+.s-black h2::before,
+.s-black h2::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background-image: url(../img/cats_decor.png);
+  top: 19px;
+}
+
+/* line 295, ../sass/main.scss */
+.s-black h2::before {
+  margin-left: -68px;
+}
+
+/* line 298, ../sass/main.scss */
+.s-black h2::after {
+  background-position: 50px 0;
+  margin-left: 20px;
+}
+
+/* line 303, ../sass/main.scss */
+.art-header h2::before,
+.art-header h2::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background-image: url(../img/art-header-decor.png);
+  top: 19px;
+}
+
+/* line 312, ../sass/main.scss */
+.art-header h2::before {
+  margin-left: -68px;
+}
+
+/* line 315, ../sass/main.scss */
+.art-header h2::after {
+  background-position: 50px 0;
+  margin-left: 20px;
+}
+
+/* line 320, ../sass/main.scss */
+.main-cats_wrap {
+  position: relative;
+}
+
+/* line 323, ../sass/main.scss */
+.mc_write_af {
+  content: '';
+  background-image: url(../img/mc-nav-arr.png);
+  background-position: 20px 0px;
+  height: 11px;
+  width: 19px;
+  margin: 20px 69px;
+  position: absolute;
+  display: none;
+}
+
+/* line 333, ../sass/main.scss */
+.main-cats_item-wrap {
+  margin-left: 30px;
+  width: 160px;
+  display: inline-block;
+  text-align: center;
+}
+/* line 339, ../sass/main.scss */
+.main-cats_item-wrap a {
+  color: #fff;
+}
+/* line 343, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(1) {
+  margin-left: 0;
+}
+/* line 346, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(1) span {
+  background-position: -15px 0;
+}
+/* line 351, ../sass/main.scss */
+.main-cats_item-wrap.active {
+  background-color: #2a2a2a;
+}
+/* line 354, ../sass/main.scss */
+.main-cats_item-wrap.active ul {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 20px;
+  background-color: #353535;
+  margin-top: 30px;
+  display: none;
+  left: 0 !important;
+  margin-left: 40px;
+  z-index: 1000;
+}
+/* line 369, ../sass/main.scss */
+.main-cats_item-wrap.active ul li {
+  display: inline-block;
+  font-family: "BebasRegular";
+}
+/* line 373, ../sass/main.scss */
+.main-cats_item-wrap.active ul li a {
+  text-decoration: underline;
+  padding: 0 10px;
+}
+/* line 377, ../sass/main.scss */
+.main-cats_item-wrap.active ul li a:hover {
+  text-decoration: none;
+}
+/* line 385, ../sass/main.scss */
+.main-cats_item-wrap a:hover h4, .main-cats_item-wrap:hover {
+  text-decoration: underline;
+  background-color: #2a2a2a;
+}
+/* line 391, ../sass/main.scss */
+.main-cats_item-wrap.active .main-cats_toggle, .main-cats_item-wrap:hover .main-cats_toggle {
+  background-color: #353535;
+}
+/* line 397, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(2) span {
+  background-position: -160px 0;
+}
+/* line 400, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(3) span {
+  background-position: -320px 0;
+}
+/* line 403, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(4) span {
+  background-position: -483px 0;
+}
+/* line 406, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(5) span {
+  background-position: -635px 0;
+}
+/* line 409, ../sass/main.scss */
+.main-cats_item-wrap:nth-child(6) span {
+  background-position: -780px 0;
+}
+
+/* line 413, ../sass/main.scss */
+.main-cats_item {
+  border: #353535 1px solid;
+  border-radius: 2px;
+}
+/* line 417, ../sass/main.scss */
+.main-cats_item span {
+  display: block;
+  height: 85px;
+  width: 130px;
+  background-image: url(../img/cats-iconset.png);
+  margin: 10px auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+/* line 427, ../sass/main.scss */
+.main-cats_item h4 {
+  margin-top: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-weight: "BebasBold";
+}
+
+/* line 436, ../sass/main.scss */
+.main-cats_toggle {
+  background-color: #212121;
+  height: 25px;
+  cursor: pointer;
+  background-image: url(../img/arr.png);
+  background-repeat: no-repeat;
+  background-position: 73px 10px;
+}
+
+/* line 444, ../sass/main.scss */
+.main-cats_toggle:hover {
+  background-position: -110px 10px;
+}
+
+/* line 447, ../sass/main.scss */
+.active .main-cats_toggle {
+  background-position: -110px 10px;
+}
+
+/****CONTENT*****/
+/* line 454, ../sass/main.scss */
+.items {
+  background-color: #d6d6d6;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+/* line 461, ../sass/main.scss */
+.art-header h2 {
+  text-transform: uppercase;
+  color: #444;
+  font-family: "BebasRegular";
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* line 470, ../sass/main.scss */
+.art-header_desc {
+  max-width: 790px;
+  text-align: center;
+  margin: auto;
+  color: #050505;
+}
+
+/* line 477, ../sass/main.scss */
+.items_item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+/* line 481, ../sass/main.scss */
+.items_item img {
+  width: 100%;
+}
+
+/* line 486, ../sass/main.scss */
+.items_text {
+  text-align: center;
+  color: #050505;
+  font-size: 14px;
+}
+
+/***BOTTOM*****/
+/* line 495, ../sass/main.scss */
+.bottom {
+  padding-top: 32px;
+}
+/* line 498, ../sass/main.scss */
+.bottom h2 {
+  margin-top: 0;
+  padding-top: 10px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  color: #444;
+  font-family: "BebasBold";
+  font-size: 40px;
+}
+/* line 508, ../sass/main.scss */
+.bottom img {
+  margin-top: 50px;
+}
+
+/* line 512, ../sass/main.scss */
+.bottom_content {
+  padding: 10px 20px;
+}
+
+/****FOOTER*****/
+/* line 518, ../sass/main.scss */
+.page-footer {
+  background-color: #2a2a2a;
+  padding: 28px 0 25px;
+  color: #fff;
+}
+/* line 523, ../sass/main.scss */
+.page-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* line 527, ../sass/main.scss */
+.page-footer a:hover {
+  text-decoration: none;
+}
+
+/* line 533, ../sass/main.scss */
+.footer_menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 538, ../sass/main.scss */
+.footer_menu li {
+  float: left;
+}
+/* line 541, ../sass/main.scss */
+.footer_menu li a {
+  padding: 0 10px;
+}
+
+/* line 548, ../sass/main.scss */
+.help {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 100px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
