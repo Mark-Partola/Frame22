@@ -9,8 +9,11 @@ Application::init();
 
 Request('GET', '/','Ctrl_index');
 Request('GET', '/cats','Ctrl_index:getCats');
-
+//все продукты
 Request('GET', '/products/limit/{limit}','Application\ProductsController:getAllProducts');
+//продукты по фильтру
+Request('GET', '/products/filter','Application\ProductsController:getProductsByFilter');
+
 //Получить свойства
 Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsForElem');
 //Сохранить свойства

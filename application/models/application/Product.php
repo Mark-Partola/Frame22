@@ -170,5 +170,13 @@ class Product extends \Models\Model_abstractDb{
 
 	}
 
+	/**
+	* Выборка продуктов по фильтру
+	*/
+	public function getProductsByFilter($criteria){
+
+
+	}
+
 
 }

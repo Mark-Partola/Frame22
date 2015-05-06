@@ -11,11 +11,14 @@ define([
 		//tagName: 'ul',
 
 		render: function () {
+
+			$('#area-products').html('');
+
 			this.collection.each(function(product){
 				console.log(product);
 				var productView = new ProductView({model: product});
 
-				$('#area-products').find('footer').before((productView.render().el));
+				$('#area-products').append((productView.render().el));
 
 			}, this);
 

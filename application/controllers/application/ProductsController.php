@@ -44,4 +44,12 @@ class ProductsController extends \Controllers\Ctrl_base{
 		//echo json_encode(["title" => 'Хорошо', "status"=>'1']);
 	}
 
+	public function getProductsByFilter(){
+
+		$criteria = json_decode($_GET['filter']);
+
+		$model = new \Models\Application\Product;
+		$model->getProductsByFilter($criteria);
+	}
+
 }
