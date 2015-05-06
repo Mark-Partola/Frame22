@@ -56,13 +56,23 @@
 					</div>
 
 					<div class="col-md-7">
-						<div class="row">
+						<div class="row" id="area-products">
 								<header class="row">
 									<div class="col-md-12">
 										<div class="items-pagination"></div>
 									</div>
 								</header>
-								<div class="col-md-4">
+								<script type="text/template" id="product-template">
+									<div class="col-md-4">
+										<div class="items_item">
+											<a href="<%=main_image%>" class="fancybox" data-fancybox-group="group">
+												<img src="<%=main_image%>" alt="" style="height: 200px;">
+											</a>
+											<p class="items_text"><%=title%></p>
+										</div>
+									</div>
+								</script>
+								<!--div class="col-md-4">
 									<div class="items_item">
 										<a href="http://cnet4.cbsistatic.com/fly/1173-fly/bundles/cnetcss/images/placeholder/image_placeholder.png" class="fancybox" data-fancybox-group="group">
 											<img src="http://cnet4.cbsistatic.com/fly/1173-fly/bundles/cnetcss/images/placeholder/image_placeholder.png" alt="">
@@ -133,7 +143,7 @@
 										</a>
 										<p class="items_text">Lorem ipsum dolor sias, delectus! Tempora.</p>
 									</div>
-								</div>
+								</div-->
 								<footer class="row">
 									<div class="col-md-12">
 										<div class="items-pagination"></div>
@@ -313,5 +323,67 @@
 			</div>
 		</div>
 	</footer>
+		<footer class="page-footer" style="background-color: #111;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						Автор - <a href="http://vk.com/id95537731">Партола Марк</a> (ВКонтакте)
+					</div>
+					<div class="col-md-7">
+						<nav>
+							<ul class="footer_menu">
+								<li><a href="#">О нас</a></li>
+								<li><a href="#">Прайс</a></li>
+								<li><a href="#">Магазин</a></li>
+								<li><a href="#">Товары</a></li>
+								<li><a href="#">Оплата</a></li>
+								<li><a href="#">Доставка</a></li>
+								<li><a href="#">Контакты</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="help">
+			<h2>Здравстуйте, можем ли мы чем-нибудь помочь?</h2>
+			<textarea name="" id="" cols="30" rows="10"></textarea>
+		</div>
+		<div class="hidden"></div>
+		<!-- Mandatory for Responsive Bootstrap Toolkit to operate -->
+		<div class="device-xs visible-xs"></div>
+		<div class="device-sm visible-sm"></div>
+		<div class="device-md visible-md"></div>
+		<div class="device-lg visible-lg"></div>
+		<!-- end mandatory -->
+		<!--[if lt IE 9]>
+		<script src="libs/html5shiv/es5-shim.min.js"></script>
+		<script src="libs/html5shiv/html5shiv.min.js"></script>
+		<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+		<script src="libs/respond/respond.min.js"></script>
+		<![endif]-->
+		<script src="{{dir}}/tpl/templates/app/libs/jquery/jquery-1.11.1.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/fancybox/jquery.fancybox.pack.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/waypoints/waypoints-1.6.2.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/scrollto/jquery.scrollTo.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/owl-carousel/owl.carousel.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.plugin.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.countdown.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/countdown/jquery.countdown-ru.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/landing-nav/navigation.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/bootstrap-toolkit/bootstrap-toolkit.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/maskedinput/jquery.maskedinput.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/equalheight/jquery.equalheight.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/stellar/jquery.stellar.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/ion.rangeSlider-2.0.6/js/ion.rangeSlider.min.js"></script>
+		<script src="{{dir}}/tpl/templates/app/libs/pagination/jquery.simplePagination.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-{% include 'app/footer.html' with {'dir': dir} %}
+		<script src="{{dir}}/tpl/templates/app/js/common.js"></script>
+		<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+		<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+
+		<script data-main="{{dir}}/tpl/templates/app/js/app/main.js" src="/frame-22-22/public/libs/requirejs/require.js"></script>
+	</body>
+	</html>

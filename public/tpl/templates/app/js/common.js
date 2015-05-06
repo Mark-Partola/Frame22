@@ -252,3 +252,57 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+	$(function(){
+		$("#range").ionRangeSlider({
+			type: "double",
+			grid: true,
+			min: -1000,
+			max: 1000,
+		});
+		$("#range1").ionRangeSlider({
+			type: "double",
+			grid: true,
+			min: -1000,
+			max: 1000,
+		});
+	});
+
+	$(function(){
+		$('.left-menu a').on('click', function(e){
+			e.preventDefault();
+			$(this).next().slideToggle();
+		});
+	});
+
+	$(function() {
+	    $(".items-pagination").pagination({
+	        items: 100,
+	        itemsOnPage: 10,
+	        cssStyle: 'dark-theme'
+	    });
+	});
+
+	$(document).ready(function() {
+	 
+	  $("#owl-demo").owlCarousel({
+	 
+	      navigation : true,
+	      autoPlay : true,
+	      slideSpeed : 300,
+	      paginationSpeed : 400,
+	      lazyLoad : true,
+	      navigationText: ["",""],
+	      //singleItem:true
+	 
+	      // "singleItem:true" is a shortcut for:
+	       items : 5, 
+	      // itemsDesktop : false,
+	      // itemsDesktopSmall : false,
+	      // itemsTablet: false,
+	      // itemsMobile : false
+	  });
+	 
+	});

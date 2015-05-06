@@ -4,11 +4,11 @@
 class ProductsController extends \Controllers\Ctrl_base{
 
 
-	public function getAllProducts(){
+	public function getAllProducts($limit){
 
 		header('Content-Type: text/json');
 		$model = new \Models\Application\Product;
-		echo json_encode($model->getLastProducts(9));
+		echo json_encode($model->getLastProducts($limit));
 
 	}
 

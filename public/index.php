@@ -10,7 +10,7 @@ Application::init();
 Request('GET', '/','Ctrl_index');
 Request('GET', '/cats','Ctrl_index:getCats');
 
-Request('GET', '/products','Application\ProductsController:getAllProducts');
+Request('GET', '/products/limit/{limit}','Application\ProductsController:getAllProducts');
 //Получить свойства
 Request('GET', '/elems/props/{id}','Application\ProductsController:getAllPropsForElem');
 //Сохранить свойства

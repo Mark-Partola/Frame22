@@ -38,8 +38,17 @@
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/main.css" />
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/cats.css" />
 	<link rel="stylesheet" href="{{dir}}/tpl/templates/app/css/media.css" />
+
+	<style>
+	     #map{
+	     	display: none;
+	     	width: 1000px;
+	     	height: 1000px;
+	     }
+	</style>
 </head>
 <body>
+	<div id="map"></div>
 	<header class="page-header inner-header">
 		<div class="page-header_top-line">
 			<div class="container">
@@ -47,7 +56,7 @@
 					<div class="col-md-5">
 						<div class="page-header_info">
 							<strong>Москва</strong>
-							<a href="#map" class="fancybox">
+							<a href="#map" class="fancybox" id="shake">
 								ул. Верейская, 29, стр. 35
 							</a>
 						</div>

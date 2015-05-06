@@ -6,9 +6,13 @@ class Product extends \Models\Model_abstractDb{
 
 	public function getLastProducts($limit){
 
-		$stmt = $this->db->query("SELECT * FROM `prefix_article`");
+		$res = $this->orm->select("SELECT `id`, `title`, `main_image` FROM `prefix_article` ORDER BY `create_at` DESC LIMIT ?", array((int)$limit));
 
-		return $stmt->fetchAll();
+		array_walk($res, function(&$item) {
+			if(empty($item['main_image'])) unset($item['main_image']);
+		});
+
+		return $res;
 
 	}
 
@@ -39,6 +43,15 @@ class Product extends \Models\Model_abstractDb{
 			$res['content'] = $preRes['content'];
 			$res['props'][$preRes['prop_title']] = $preRes['value'];
 		}
+
+		if(empty($res)) {
+			$res = $this->orm->select("SELECT `title`, `main_image`, `id`, `content` FROM `prefix_article`
+				WHERE `id` = ?", array($id));
+		}
+
+/*		array_walk($res, function(&$item) {
+			if(!$item) unset($item);
+		});*/
 
 		return $res;
 

@@ -54,68 +54,16 @@
 	<script src="{{dir}}/tpl/templates/app/libs/stellar/jquery.stellar.min.js"></script>
 	<script src="{{dir}}/tpl/templates/app/libs/ion.rangeSlider-2.0.6/js/ion.rangeSlider.min.js"></script>
 	<script src="{{dir}}/tpl/templates/app/libs/pagination/jquery.simplePagination.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="{{dir}}/tpl/templates/app/js/common.js"></script>
+
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
 
-	<script>
-		$(function(){
-			$("#range").ionRangeSlider({
-				type: "double",
-				grid: true,
-				min: -1000,
-				max: 1000,
-			});
-			$("#range1").ionRangeSlider({
-				type: "double",
-				grid: true,
-				min: -1000,
-				max: 1000,
-			});
-		});
-	</script>
 
-	<script>
-		$(function(){
-			$('.left-menu a').on('click', function(e){
-				e.preventDefault();
-				$(this).next().slideToggle();
-			});
-		});
-	</script>
+	<!-- Requirejs -->
+	<script data-main="{{dir}}/tpl/templates/app/js/app/main.js" src="{{dir}}/libs/requirejs/require.js"></script>
 
-	<script>
-		$(function() {
-		    $(".items-pagination").pagination({
-		        items: 100,
-		        itemsOnPage: 10,
-		        cssStyle: 'dark-theme'
-		    });
-		});
-	</script>
 
-	<script>
-		$(document).ready(function() {
-		 
-		  $("#owl-demo").owlCarousel({
-		 
-		      navigation : true,
-		      autoPlay : true,
-		      slideSpeed : 300,
-		      paginationSpeed : 400,
-		      lazyLoad : true,
-		      navigationText: ["",""],
-		      //singleItem:true
-		 
-		      // "singleItem:true" is a shortcut for:
-		       items : 5, 
-		      // itemsDesktop : false,
-		      // itemsDesktopSmall : false,
-		      // itemsTablet: false,
-		      // itemsMobile : false
-		  });
-		 
-		});
-	</script>
 </body>
 </html>
