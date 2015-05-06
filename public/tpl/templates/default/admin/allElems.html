@@ -106,13 +106,14 @@
 </script>
 
 <script>
-	$('.j-elem-pict').on('click', function(e) {
+	$.ajaxSetup({cache: false});
+	$('.j-elems-container').on('click', '.j-elem-pict', function(e) {
 		e.preventDefault();
 		var id = $(this).data('id');
+		$('#callback').html('');
 
 		$.post( $('.j-dir').html()+'/tpl/templates/default/admin/includes/pictElem.php',{id: id})
 		.done(function( data ) {
-			$('#callback').html('');
 			$('#callback').html(data);
 		});
 	});

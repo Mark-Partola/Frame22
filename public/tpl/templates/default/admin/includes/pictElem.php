@@ -1,3 +1,4 @@
+<?header("Cache-Control: no-store")?>
 <article style="width: 700px;">
 	<h3 style="margin:20px; font-size: 20px;">Выбор изображения</h3>
 	<div class="module_content">

@@ -76,6 +76,10 @@ requirejs([
 
 	$('#j-filter').on('click', function() {
 
+		var title = $('#j-filter-title').val();
+		console.log(title);
+		if(title) filter.title = title;
+
 		productsCollection.fetch({
 
 			url: 'http://localhost/frame-22-22/public/products/filter?filter='+JSON.stringify(filter),

@@ -145,7 +145,7 @@ class Product extends \Models\Model_abstractDb{
 	/**
 	* Установка главного изабражения элемента
 	*/
-	public function saveMainImage($id, $src){
+	public function saveMainImage($id, $src) {
 
 		$sql = "UPDATE `prefix_article` SET `main_image` = ?
 					WHERE `id` = ?";
@@ -159,7 +159,7 @@ class Product extends \Models\Model_abstractDb{
 	/**
 	* Изменение статуса элемента
 	*/
-	public function changeStatus($id, $status){
+	public function changeStatus($id, $status) {
 
 		$sql = "UPDATE `prefix_article` SET `status` = ?
 					WHERE `id` = ?";
@@ -173,8 +173,47 @@ class Product extends \Models\Model_abstractDb{
 	/**
 	* Выборка продуктов по фильтру
 	*/
-	public function getProductsByFilter($criteria){
+	public function getProductsByFilter($criteria) {
 
+		$firstPartSQL = "SELECT `id`, `title`, `main_image` FROM `prefix_article`";
+		$lastPartSQL = " ORDER BY `create_at` DESC";
+
+		$detectWhere = false;
+		$arguments = array();
+
+		if(isset($criteria->priceRange)) {
+			if(!$detectWhere) {
+				$firstPartSQL .= " WHERE ";
+				$detectWhere = true;
+			}
+			$firstPartSQL .= "`price` BETWEEN ? AND ?";
+			array_push($arguments, $criteria->priceRange->from);
+			array_push($arguments, $criteria->priceRange->to);
+		}
+
+		if(isset($criteria->title)) {
+			if(!$detectWhere) {
+				$firstPartSQL .= " WHERE ";
+				$detectWhere = true;
+			} else {
+				$firstPartSQL .= ' AND ';
+			}
+			$firstPartSQL .= "`title` LIKE %{$criteria->title}%";
+		}
+
+		$sql = $firstPartSQL . $lastPartSQL;
+
+		$res = $this->orm->select($sql, $arguments);
+
+		array_walk($res, function(&$item) {
+			if(empty($item['main_image'])) unset($item['main_image']);
+		});
+
+
+		//print_arr($res);
+		echo urldecode($criteria->title);
+		echo $sql;
+		//return $res;
 
 	}
 
