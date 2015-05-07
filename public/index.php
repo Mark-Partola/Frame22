@@ -8,7 +8,7 @@ Application::init();
 /***APPLICATION***/
 
 Request('GET', '/','Ctrl_index');
-Request('GET', '/cats','Ctrl_index:getCats');
+Request('GET', '/shop','Ctrl_index:getCats');
 //все продукты
 Request('GET', '/products/limit/{limit}','Application\ProductsController:getAllProducts');
 //продукты по фильтру
