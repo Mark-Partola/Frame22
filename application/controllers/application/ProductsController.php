@@ -47,7 +47,7 @@ class ProductsController extends \Controllers\Ctrl_base{
 	public function getProductsByFilter(){
 
 		$criteria = json_decode($_GET['filter']);
-
+		//print_arr($criteria->title);
 		$model = new \Models\Application\Product;
 		echo json_encode($model->getProductsByFilter($criteria));
 	}

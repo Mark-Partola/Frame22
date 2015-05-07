@@ -198,22 +198,25 @@ class Product extends \Models\Model_abstractDb{
 			} else {
 				$firstPartSQL .= ' AND ';
 			}
-			$firstPartSQL .= "`title` LIKE %{$criteria->title}%";
+			$firstPartSQL .= "`title` LIKE '%".$criteria->title."%'";
 		}
 
 		$sql = $firstPartSQL . $lastPartSQL;
 
 		$res = $this->orm->select($sql, $arguments);
 
-		array_walk($res, function(&$item) {
-			if(empty($item['main_image'])) unset($item['main_image']);
-		});
+		if(!isset($res['main_image'])) {
+			array_walk($res, function(&$item) {
+				if(empty($item['main_image'])) unset($item['main_image']);
+			});
+		} else {
+			if(empty($res['main_image'])) unset($res['main_image']);
+		}
 
 
 		//print_arr($res);
-		echo urldecode($criteria->title);
-		echo $sql;
-		//return $res;
+		//echo $sql;
+		return $res;
 
 	}
 

@@ -77,7 +77,7 @@ requirejs([
 	$('#j-filter').on('click', function() {
 
 		var title = $('#j-filter-title').val();
-		console.log(title);
+
 		if(title) filter.title = title;
 
 		productsCollection.fetch({
