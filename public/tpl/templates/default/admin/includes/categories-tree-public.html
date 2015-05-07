@@ -1,0 +1,60 @@
+{% for elem in treeCats %}
+	<li>
+
+		{% if elem.children %}
+			<div class="left-menu_title" style="padding-right: 50px; position: relative;">{{elem.title}} 
+				<a href="/frame-22-22/public/category/{{elem.id}}" style="position: absolute; right: 10px; background-color: #444; color: #fff; padding: 3px 10px; border-radius: 50%;">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		{% else %}
+			<div class="left-menu_title" style="padding-right: 50px; position: relative;">{{elem.title}} 
+				<a href="/frame-22-22/public/category/{{elem.id}}" style="position: absolute; right: 10px; background-color: #444; color: #fff; padding: 3px 10px; border-radius: 50%;">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		{% endif %}
+
+		{% if elem.children %}
+			<ul>
+				{% include "default/admin/includes/categories-tree-public.html" with {'treeCats': elem.children} %}
+			</ul>
+		{% endif %}
+	</li>
+
+{% endfor %}
+
+<!--div class="left-menu">
+	<ul>
+		<li>
+			<a href="#">Section 1</a>
+			<ul>
+				<li><a href="#">Подсекция</a>
+					<ul>
+						<li><a href="#">Подсекция 2</a></li>
+						<li><a href="#">Подсекция 2</a></li>
+						<li><a href="#">Подсекция 2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Подсекция</a></li>
+				<li><a href="#">Подсекция</a></li>
+			</ul>
+		</li>
+		<li class="left-menu_title">
+			<a href="#">Section 1</a>
+			<ul>
+				<li><a href="#">Подсекция</a></li>
+				<li><a href="#">Подсекция</a></li>
+				<li><a href="#">Подсекция</a></li>
+			</ul>
+		</li>
+		<li class="left-menu_title">
+			<a href="#">Section 1</a>
+			<ul>
+				<li><a href="#">Подсекция</a></li>
+				<li><a href="#">Подсекция</a></li>
+				<li><a href="#">Подсекция</a></li>
+			</ul>
+		</li>
+	</ul>
+</div-->

@@ -1,3 +1,15 @@
+.img-effect{
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.advert{
+  z-index: 10001;
+  text-align: center;
+  
+}
+
 /* line 1, ../sass/cats.scss */
 .filter-text {
   width: 100%;
@@ -21,12 +33,13 @@
   margin-top: 10px;
 }
 /* line 20, ../sass/cats.scss */
-.left-menu ul li a {
+.left-menu ul li .left-menu_title {
   display: block;
   cursor: pointer;
   background-color: #f0f0f0;
   padding: 10px;
   width: 100%;
+  color: #336a87;
 }
 /* line 31, ../sass/cats.scss */
 .left-menu ul ul li {
@@ -34,7 +47,7 @@
   margin-top: 5px;
 }
 /* line 36, ../sass/cats.scss */
-.left-menu ul ul a {
+.left-menu ul ul .left-menu_title {
   background-color: #f6f6f6;
 }
 

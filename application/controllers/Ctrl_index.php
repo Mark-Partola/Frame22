@@ -21,8 +21,11 @@ class Ctrl_index extends Ctrl_base{
 
 		$template = $this->twig->loadTemplate('app/cats.html');
 
+		$catsTree = new \Models\User\Users();
+
 		$args = array(
-			'dir' => ROUTE_ROOT
+			'dir' => ROUTE_ROOT,
+			'treeCats' => $catsTree->getCategories()
 		);
 
 		echo $template->render($args);

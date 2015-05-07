@@ -15,7 +15,7 @@ define([
 			$('#area-products').html('');
 
 			this.collection.each(function(product){
-				console.log(product);
+				//console.log(product);
 				var productView = new ProductView({model: product});
 
 				$('#area-products').append((productView.render().el));

@@ -254,8 +254,7 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 	$(function(){
-		$('.left-menu a').on('click', function(e){
-			e.preventDefault();
+		$('.left-menu .left-menu_title').on('click', function(e){
 			$(this).next().slideToggle();
 		});
 	});

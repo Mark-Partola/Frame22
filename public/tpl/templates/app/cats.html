@@ -6,9 +6,9 @@
 	<article class="content art-header">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>Категория с товарами</h2>
-					<p class="art-header_desc">Мы используем только качественные материалы тра-та=та, тут нужно будет вывести какое-то описание, большоооое описание категории. Заполняем место, заполняем</p>
+				<div class="col-md-12 wow pulse" data-wow-duration="0.15s" data-wow-iteration="5">
+					<h2>Добро пожаловать в наш интернет магазин</h2>
+					<p class="art-header_desc">Мы используем только качественные материалы, качественные товары как отечественного, так и импортного производства. Спасибо что обратились к нам!</p>
 				</div>
 			</div>
 		</div>
@@ -21,36 +21,7 @@
 						</header>
 						<div class="left-menu">
 							<ul>
-								<li>
-									<a href="#">Section 1</a>
-									<ul>
-										<li><a href="#">Подсекция</a>
-											<ul>
-												<li><a href="#">Подсекция 2</a></li>
-												<li><a href="#">Подсекция 2</a></li>
-												<li><a href="#">Подсекция 2</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Подсекция</a></li>
-										<li><a href="#">Подсекция</a></li>
-									</ul>
-								</li>
-								<li class="left-menu_title">
-									<a href="#">Section 1</a>
-									<ul>
-										<li><a href="#">Подсекция</a></li>
-										<li><a href="#">Подсекция</a></li>
-										<li><a href="#">Подсекция</a></li>
-									</ul>
-								</li>
-								<li class="left-menu_title">
-									<a href="#">Section 1</a>
-									<ul>
-										<li><a href="#">Подсекция</a></li>
-										<li><a href="#">Подсекция</a></li>
-										<li><a href="#">Подсекция</a></li>
-									</ul>
-								</li>
+								{% include "default/admin/includes/categories-tree-public.html"  with {'treeCats':treeCats} only %}
 							</ul>
 						</div>
 					</div>
@@ -63,7 +34,7 @@
 									</div>
 								</header>
 								<script type="text/template" id="product-template">
-									<div class="col-md-4">
+									<div class="col-md-4 wow slideInLeft">
 										<div class="items_item">
 											<a href="<%=main_image%>" class="fancybox" data-fancybox-group="group">
 												<img src="<%=main_image%>" alt="" style="height: 200px;">
@@ -159,7 +130,7 @@
 						</header>
 						<h4>Цена</h4>
 						<div id="range"></div>
-						<h4>Год</h4>
+						<h4>Год <label style="font-size:10px; float: right; line-height: 20px;"> Активность: <input type="checkbox" style="margin-left: 10px; width: 15px; height: 18px;" id="j-filter-year-activity"></label></h4>
 						<div id="range1"></div>
 						<h4>Название</h4>
 						<input type="text" class="filter-text" placeholder="Поиск" id="j-filter-title">
@@ -171,9 +142,24 @@
 	</article>
 
 
+	<article style="background-color: #000; height: 1000px; width: 100%; z-index: 1000" id="advert">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="position: relative;">
+					<h2 class="wow bounceInDown" data-wow-duration="1s" style="z-index:100000; width: 100%; margin-left: 50px; font-size: 50px; text-align: center; color: #fff; position: absolute; top: 700px;">Тут типа реклама</h2>
+					<img src="http://www.lexusls.asia/assets/img/sec-03f-bg1.jpg" alt="" class="img-effect" style="opacity:1">
+					<img src="http://www.lexusls.asia/assets/img/sec-03f-bg2.jpg" alt="" class="img-effect" style="opacity:0">
+					<img src="http://www.lexusls.asia/assets/img/sec-03f-bg3.jpg" alt="" class="img-effect" style="opacity:0">
+					<img src="http://www.lexusls.asia/assets/img/sec-03f-bg4.jpg" alt="" class="img-effect" style="opacity:0">
+				</div>
+			</div>
+		</div>
+	</article>
+	<article style="height: 2000px;">
+		
+	</article>
 
 
-	
 	<article class="content art-header">
 		<div class="container">
 			<div class="row">
@@ -226,13 +212,6 @@
 			</div>
 		</section>
 	</article>
-
-
-
-
-
-
-
 
 
 	<section class="main-cats s-black" style="padding-top: 20px;">
@@ -383,10 +362,92 @@
 		<script src="{{dir}}/tpl/templates/app/libs/pagination/jquery.simplePagination.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
+		<script src="{{dir}}/libs/WOW/dist/wow.min.js"></script>
+		<script>
+			new WOW().init();
+		</script>
+
 		<script src="{{dir}}/tpl/templates/app/js/common.js"></script>
 		<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 		<!-- Google Analytics counter --><!-- /Google Analytics counter -->
 
 		<script data-main="{{dir}}/tpl/templates/app/js/app/main.js" src="/frame-22-22/public/libs/requirejs/require.js"></script>
+
+		<script>
+			var currentTop = 3000;
+			var opacity1 = 0.01;
+			var opacity2 = 0.01;
+			var opacity3 = 0.01;
+			$(document).on('scroll', function(e) {
+				console.log(currentTop);
+				if($(this).scrollTop() > 1980 && $(this).scrollTop() < 3000) {
+					$('#advert').css({
+						'position':'fixed',
+						'top': '0',
+						'left' : '0'
+					});
+
+					if(opacity3 > 1){
+						opacity2 = opacity2 += 0.1;
+					}
+					if(opacity2 > 1){
+						opacity1 = opacity1 += 0.2;
+					}
+					opacity3 = opacity3 += 0.1;
+					$('.img-effect')[3].style.opacity = opacity1;
+					$('.img-effect')[2].style.opacity = opacity2;
+					$('.img-effect')[1].style.opacity = opacity3;
+					$('.img-effect')[0].style.opacity = 1;
+
+				}
+				else if($(this).scrollTop() >= 3000 && $(this).scrollTop() < 4000) {
+					$('#advert').css({
+						'position':'fixed',
+						'top': currentTop - $(this).scrollTop() + 'px',
+						'left' : '0'
+					});
+
+					opacity1 = opacity1/10;
+					$('.img-effect')[3].style.opacity = opacity1;
+					$('.img-effect')[2].style.opacity = 0;
+					$('.img-effect')[1].style.opacity = 0;
+					$('.img-effect')[0].style.opacity = 1;
+
+				}
+				else if($(this).scrollTop() > 4000) {
+					$('#advert').css({
+						'position':'fixed',
+						'top': '-1000px',
+						'left' : '0'
+					});
+
+					opacity1 = 0.01;
+					opacity2 = 0.01;
+					opacity3 = 0.01;
+					$('.img-effect')[3].style.opacity = opacity1;
+					$('.img-effect')[2].style.opacity = opacity2;
+					$('.img-effect')[1].style.opacity = opacity3;
+					$('.img-effect')[0].style.opacity = 1;
+
+
+				}
+				else if($(this).scrollTop() < 1980) {
+					$('#advert').css({
+						'position':'static',
+						'top': '0',
+						'left' : '0'
+					});
+
+					opacity1 = 0.01;
+					opacity2 = 0.01;
+					opacity3 = 0.01;
+					$('.img-effect')[3].style.opacity = 0;
+					$('.img-effect')[2].style.opacity = 0;
+					$('.img-effect')[1].style.opacity = 0;
+					$('.img-effect')[0].style.opacity = 1;
+
+				}
+			});
+		</script>
 	</body>
 	</html>

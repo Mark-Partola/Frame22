@@ -175,8 +175,12 @@ class Product extends \Models\Model_abstractDb{
 	*/
 	public function getProductsByFilter($criteria) {
 
-		$firstPartSQL = "SELECT `id`, `title`, `main_image` FROM `prefix_article`";
+		$firstPartSQL = "SELECT DISTINCT `a`.`id`, `a`.`title`, `a`.`main_image` 
+							FROM `prefix_article` as `a` 
+								LEFT JOIN `prefix_props` as `p` 
+									ON `a`.`id` = `p`.`id_elem`";
 		$lastPartSQL = " ORDER BY `create_at` DESC";
+
 
 		$detectWhere = false;
 		$arguments = array();
@@ -186,9 +190,23 @@ class Product extends \Models\Model_abstractDb{
 				$firstPartSQL .= " WHERE ";
 				$detectWhere = true;
 			}
-			$firstPartSQL .= "`price` BETWEEN ? AND ?";
+			$firstPartSQL .= "`a`.`price` BETWEEN ? AND ?";
 			array_push($arguments, $criteria->priceRange->from);
 			array_push($arguments, $criteria->priceRange->to);
+		}
+
+		if(isset($criteria->yearRange)) {
+			if(!$detectWhere) {
+				$firstPartSQL .= " WHERE ";
+				$detectWhere = true;
+			} else {
+				$firstPartSQL .= ' AND ';
+			}
+			$firstPartSQL .= " `p`.`value` BETWEEN ? AND ? 
+									AND `p`.`prop_title` = 'year'";
+
+			array_push($arguments, $criteria->yearRange->from);
+			array_push($arguments, $criteria->yearRange->to);
 		}
 
 		if(isset($criteria->title)) {
@@ -198,7 +216,7 @@ class Product extends \Models\Model_abstractDb{
 			} else {
 				$firstPartSQL .= ' AND ';
 			}
-			$firstPartSQL .= "`title` LIKE '%".$criteria->title."%'";
+			$firstPartSQL .= "`a`.`title` LIKE '%".$criteria->title."%'";
 		}
 
 		$sql = $firstPartSQL . $lastPartSQL;

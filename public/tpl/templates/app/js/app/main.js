@@ -4,7 +4,8 @@ requirejs.config({
 		"jquery": "../../../../../libs/jquery/dist/jquery",
 		"underscore": "../../../../../libs/underscore-amd/underscore",
 		"backbone": "../../../../../libs/backbone-amd/backbone",
-		ionRangeSlider: "/frame-22-22/public/tpl/templates/app/libs/ion.rangeSlider-2.0.6/js/ion.rangeSlider.min"
+		ionRangeSlider: "/frame-22-22/public/tpl/templates/app/libs/ion.rangeSlider-2.0.6/js/ion.rangeSlider.min",
+		treemodel: '../../../../../libs/backbone-tree-model/src/backbone.treemodel',
 	},
 	shim: {
 		ionRangeSlider: {
@@ -22,6 +23,7 @@ requirejs([
 	'collections/productsCollection',
 	'views/productsCollectionView',
 	'ionRangeSlider',
+	'treemodel'
 
 ], function(
 
@@ -38,28 +40,43 @@ requirejs([
 		priceRange:{
 			from: 100,
 			to: 10000
+		}
+	};
+	var preFilter = {
+		yearRange:{
+			from: 2000,
+			to: 2015
 		},
-	};
+	}
 
-	var saveResult = function (data) {
-		filter.priceRange.from = data.from;
-		filter.priceRange.to = data.to;
-	};
-
-	var rangePrice = $("#range").ionRangeSlider({
+	$("#range").ionRangeSlider({
 		type: "double",
 		grid: true,
 		min: filter.priceRange.from,
 		max: filter.priceRange.to,
-		onChange: saveResult,
-		onFinish: saveResult,
+		onChange: function (data) {
+			filter.priceRange.from = data.from;
+			filter.priceRange.to = data.to;
+		},
+		onFinish: function (data) {
+			filter.priceRange.from = data.from;
+			filter.priceRange.to = data.to;
+		}
 	});
 
 	$("#range1").ionRangeSlider({
 		type: "double",
 		grid: true,
-		min: -1000,
-		max: 1000,
+		min: preFilter.yearRange.from,
+		max: preFilter.yearRange.to,
+		onChange: function (data) {
+			preFilter.yearRange.from = data.from;
+			preFilter.yearRange.to = data.to;
+		},
+		onFinish: function (data) {
+			preFilter.yearRange.from = data.from;
+			preFilter.yearRange.to = data.to;
+		}
 	});
 
 	var productsCollection = new ProductsCollection();
@@ -74,15 +91,27 @@ requirejs([
 
 	});
 
+	/**start Кнопка фильтра**/
+
 	$('#j-filter').on('click', function() {
 
 		var title = $('#j-filter-title').val();
 
-		if(title) filter.title = title;
+		delete filter.title;
+		if(title) {
+			filter.title = title;
+		}
 
+		if(!$('#j-filter-year-activity').prop('checked')) {
+			delete filter.yearRange;
+		} else {
+			filter.yearRange = preFilter.yearRange;
+		}
+
+		console.log(filter);
 		productsCollection.fetch({
 
-			url: 'http://localhost/frame-22-22/public/products/filter?filter='+JSON.stringify(filter),
+			url: '/frame-22-22/public/products/filter?filter='+JSON.stringify(filter),
 
 			success: function(){
 				new ProductsCollectionView({
@@ -92,5 +121,13 @@ requirejs([
 
 		});
 	});
+
+	/**end Кнопка фильтра**/
+
+	/**start render Категорий**/
+
+	$.get('/frame-22-22/public/')
+
+	/**end render Категорий**/
 
 })
