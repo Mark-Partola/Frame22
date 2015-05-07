@@ -31,4 +31,20 @@ class Ctrl_index extends Ctrl_base{
 		echo $template->render($args);
 
 	}
+
+	public function getCatById($id){
+
+		$template = $this->twig->loadTemplate('app/category.html');
+
+		$model = new \Models\Application\Product();
+		$catsTree = new \Models\User\Users();
+
+		$args = array(
+			'dir' => ROUTE_ROOT,
+			'treeCats' => $catsTree->getCategories()
+		);
+
+		echo $template->render($args);
+
+	}
 }

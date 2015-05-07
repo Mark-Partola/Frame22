@@ -9,6 +9,7 @@ Application::init();
 
 Request('GET', '/','Ctrl_index');
 Request('GET', '/shop','Ctrl_index:getCats');
+Request('GET', '/category/{id}','Ctrl_index:getCatById');
 //все продукты
 Request('GET', '/products/limit/{limit}','Application\ProductsController:getAllProducts');
 //продукты по фильтру
